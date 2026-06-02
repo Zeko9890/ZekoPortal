@@ -26,7 +26,14 @@ export function getAuthErrorMessage(error: any): string {
       return "Too many attempts. Please try again later.";
     case "auth/network-request-failed":
       return "Network error. Please check your connection.";
+    case "auth/popup-closed-by-user":
+    case "auth/cancelled-popup-request":
+      return "Sign-in was cancelled.";
+    case "auth/popup-blocked":
+      return "Sign-in popup was blocked. Please allow popups for this site.";
+    case "auth/account-exists-with-different-credential":
+      return "An account already exists with this email using a different sign-in method.";
     default:
-      return "Something went wrong. Please try again.";
+      return "Unable to sign in. Please try again.";
   }
 }

@@ -4,13 +4,15 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Shield, Sparkles, Check, Key, Mail, Lock, User, Building, ArrowRight, ShieldAlert } from "lucide-react";
+import { ShieldAlert, Check, Mail, Lock, User, Building, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { getAuthErrorMessage } from "@/lib/auth-errors";
+import { signInWithGoogle } from "@/lib/google-auth";
 import MascotHero from "@/components/auth/MascotHero";
+import { GoogleSignInButton } from "@/components/auth/GoogleSignInButton";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -20,6 +22,7 @@ export default function SignupPage() {
   const [company, setCompany] = useState("");
   const [agree, setAgree] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,6 +43,21 @@ export default function SignupPage() {
     } catch (err: any) {
       setError(getAuthErrorMessage(err));
       setIsLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setIsGoogleLoading(true);
+    setError(null);
+    try {
+      await signInWithGoogle();
+      setIsSuccess(true);
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 600);
+    } catch (err: any) {
+      setError(getAuthErrorMessage(err));
+      setIsGoogleLoading(false);
     }
   };
 
@@ -195,6 +213,19 @@ export default function SignupPage() {
                   </div>
                 )}
               </Button>
+
+              {/* Divider */}
+              <div className="relative flex py-1 items-center">
+                <div className="flex-grow border-t border-border/60"></div>
+                <span className="flex-shrink mx-4 text-[10px] text-muted-foreground uppercase tracking-widest">Or continue with</span>
+                <div className="flex-grow border-t border-border/60"></div>
+              </div>
+
+              {/* Google Sign-In */}
+              <GoogleSignInButton
+                isLoading={isGoogleLoading}
+                onClick={handleGoogleSignIn}
+              />
             </form>
           </motion.div>
         </div>
