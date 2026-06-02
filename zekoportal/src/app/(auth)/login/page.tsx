@@ -9,13 +9,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
+import { getAuthErrorMessage } from "@/lib/auth-errors";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("sarah@skynetsolutions.com");
-  const [password, setPassword] = useState("••••••••");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -24,9 +26,12 @@ export default function LoginPage() {
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/dashboard");
+      setIsSuccess(true);
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 600);
     } catch (err: any) {
-      setError(err.message || "Failed to sign in. Please check your credentials.");
+      setError(getAuthErrorMessage(err));
       setIsLoading(false);
     }
   };
@@ -68,8 +73,15 @@ export default function LoginPage() {
 
             <form onSubmit={handleLogin} className="space-y-4">
               {error && (
-                <div className="p-3 text-sm font-medium text-red-500 bg-red-500/10 border border-red-500/20 rounded-md">
-                  {error}
+                <div className="flex items-center gap-2 p-3 text-sm font-medium text-red-400 bg-red-500/10 border border-red-500/20 rounded-md">
+                  <Shield className="h-4 w-4 shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
+              {isSuccess && (
+                <div className="flex items-center gap-2 p-3 text-sm font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-md">
+                  <Check className="h-4 w-4 shrink-0" />
+                  <span>Login successful. Redirecting...</span>
                 </div>
               )}
               <div className="space-y-1.5">
@@ -79,10 +91,11 @@ export default function LoginPage() {
                 <Input
                   type="email"
                   required
-                  placeholder="name@company.com"
+                  placeholder="john@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-10"
+                  className="bg-zinc-900/60 border-border/80 h-10 placeholder:text-muted-foreground/50"
+                  disabled={isLoading || isSuccess}
                 />
               </div>
 
@@ -99,15 +112,17 @@ export default function LoginPage() {
                   <Input
                     type={showPassword ? "text" : "password"}
                     required
-                    placeholder="Enter password"
+                    placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="bg-zinc-900/60 border-border/80 h-10 pr-10"
+                    className="bg-zinc-900/60 border-border/80 h-10 pr-10 placeholder:text-muted-foreground/50"
+                    disabled={isLoading || isSuccess}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-3 text-muted-foreground hover:text-white"
+                    disabled={isLoading || isSuccess}
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -134,12 +149,17 @@ export default function LoginPage() {
               <Button
                 type="submit"
                 className="w-full h-10 mt-2 font-semibold"
-                disabled={isLoading}
+                disabled={isLoading || isSuccess}
               >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
-                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                    Connecting...
+                     <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                     Connecting...
+                  </div>
+                ) : isSuccess ? (
+                  <div className="flex items-center gap-2">
+                     <Check className="h-4 w-4" />
+                     Success
                   </div>
                 ) : (
                   <div className="flex items-center justify-center gap-2">

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/lib/firebase";
+import { getAuthErrorMessage } from "@/lib/auth-errors";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function SignupPage() {
   const [company, setCompany] = useState("");
   const [agree, setAgree] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -30,9 +32,12 @@ export default function SignupPage() {
       await updateProfile(userCredential.user, {
         displayName: name,
       });
-      router.push("/dashboard");
+      setIsSuccess(true);
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 600);
     } catch (err: any) {
-      setError(err.message || "Failed to create account.");
+      setError(getAuthErrorMessage(err));
       setIsLoading(false);
     }
   };
@@ -74,8 +79,15 @@ export default function SignupPage() {
 
             <form onSubmit={handleSignup} className="space-y-3.5">
               {error && (
-                <div className="p-3 text-sm font-medium text-red-500 bg-red-500/10 border border-red-500/20 rounded-md">
-                  {error}
+                <div className="flex items-center gap-2 p-3 text-sm font-medium text-red-400 bg-red-500/10 border border-red-500/20 rounded-md">
+                  <ShieldAlert className="h-4 w-4 shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
+              {isSuccess && (
+                <div className="flex items-center gap-2 p-3 text-sm font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-md">
+                  <Check className="h-4 w-4 shrink-0" />
+                  <span>Account created successfully. Redirecting...</span>
                 </div>
               )}
               <div className="space-y-1">
@@ -88,7 +100,8 @@ export default function SignupPage() {
                   placeholder="John Connor"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-9.5"
+                  className="bg-zinc-900/60 border-border/80 h-9.5 placeholder:text-muted-foreground/50"
+                  disabled={isLoading || isSuccess}
                 />
               </div>
 
@@ -99,10 +112,11 @@ export default function SignupPage() {
                 <Input
                   type="email"
                   required
-                  placeholder="john@company.com"
+                  placeholder="john@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-9.5"
+                  className="bg-zinc-900/60 border-border/80 h-9.5 placeholder:text-muted-foreground/50"
+                  disabled={isLoading || isSuccess}
                 />
               </div>
 
@@ -116,7 +130,8 @@ export default function SignupPage() {
                   placeholder="Skynet Solutions"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-9.5"
+                  className="bg-zinc-900/60 border-border/80 h-9.5 placeholder:text-muted-foreground/50"
+                  disabled={isLoading || isSuccess}
                 />
               </div>
 
@@ -127,10 +142,11 @@ export default function SignupPage() {
                 <Input
                   type="password"
                   required
-                  placeholder="At least 8 characters"
+                  placeholder="At least 6 characters"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-9.5"
+                  className="bg-zinc-900/60 border-border/80 h-9.5 placeholder:text-muted-foreground/50"
+                  disabled={isLoading || isSuccess}
                 />
               </div>
 
@@ -141,8 +157,8 @@ export default function SignupPage() {
                   id="agree"
                   checked={agree}
                   onChange={(e) => setAgree(e.target.checked)}
-                  required
-                  className="rounded border-zinc-800 bg-zinc-900 text-primary focus:ring-primary h-4 w-4 mt-0.5 accent-primary cursor-pointer"
+                  disabled={isLoading || isSuccess}
+                  className="rounded border-zinc-800 bg-zinc-900 text-primary focus:ring-primary h-4 w-4 mt-0.5 accent-primary cursor-pointer disabled:opacity-50"
                 />
                 <label
                   htmlFor="agree"
@@ -159,12 +175,17 @@ export default function SignupPage() {
               <Button
                 type="submit"
                 className="w-full h-10 mt-1 font-semibold"
-                disabled={isLoading || !agree}
+                disabled={isLoading || isSuccess || !agree}
               >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
                     <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
                     Creating Profile...
+                  </div>
+                ) : isSuccess ? (
+                  <div className="flex items-center gap-2">
+                    <Check className="h-4 w-4" />
+                    Success
                   </div>
                 ) : (
                   <div className="flex items-center justify-center gap-2">
