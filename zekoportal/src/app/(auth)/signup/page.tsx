@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { getAuthErrorMessage } from "@/lib/auth-errors";
+import MascotHero from "@/components/auth/MascotHero";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -213,37 +214,9 @@ export default function SignupPage() {
         <div className="absolute inset-0 grid-bg opacity-45 pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-primary/20 blur-[100px] pointer-events-none animate-pulse-slow" />
 
-        {/* Floating cards simulation */}
-        <div className="my-auto relative max-w-lg mx-auto flex flex-col gap-6 w-full">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="glass-card rounded-xl p-6 border border-white/10 shadow-2xl relative"
-          >
-            <div className="flex items-center justify-between border-b border-border/60 pb-4 mb-4">
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                <Shield className="h-4 w-4 text-primary" /> Security Features
-              </h3>
-              <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/15">Active</span>
-            </div>
-            
-            <div className="space-y-3">
-              {[
-                "Enterprise SSL/TLS encryption by default",
-                "Dedicated secure workspaces for each client",
-                "Role-based access permissions structure",
-                "SOC2-compliant security scanning"
-              ].map((text, i) => (
-                <div key={i} className="flex items-start gap-2.5">
-                  <div className="h-4 w-4 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <Check className="h-2.5 w-2.5 text-primary" />
-                  </div>
-                  <span className="text-xs text-zinc-300">{text}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+        {/* Interactive Mascot Hero */}
+        <div className="my-auto relative max-w-lg mx-auto w-full h-[400px]">
+          <MascotHero />
         </div>
 
         {/* Bottom branding signature */}

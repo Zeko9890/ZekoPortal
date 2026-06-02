@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { getAuthErrorMessage } from "@/lib/auth-errors";
+import MascotHero from "@/components/auth/MascotHero";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -213,47 +214,9 @@ export default function LoginPage() {
         <div className="absolute inset-0 grid-bg opacity-45 pointer-events-none" />
         <div className="absolute top-1/4 right-1/4 w-80 h-80 rounded-full bg-primary/20 blur-[100px] pointer-events-none animate-pulse-slow" />
 
-        {/* Floating cards simulation */}
-        <div className="my-auto relative max-w-lg mx-auto flex flex-col gap-6">
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-card rounded-xl p-5 border border-white/10 shadow-2xl relative"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <div className="flex items-center gap-2.5">
-                <div className="h-2 w-2 rounded-full bg-emerald-400" />
-                <span className="text-xs font-bold text-white uppercase tracking-wider">Project Active</span>
-              </div>
-              <span className="text-[10px] text-muted-foreground">June Delivery</span>
-            </div>
-            <h3 className="text-base font-bold text-white mb-2">Skynet Web Platform Redesign</h3>
-            <div className="flex items-center justify-between text-xs text-muted-foreground mb-1.5">
-              <span>Overall Progress</span>
-              <span className="font-semibold text-white">68%</span>
-            </div>
-            <div className="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
-              <div className="h-full bg-primary rounded-full w-[68%]" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="glass-card rounded-xl p-5 border border-white/10 shadow-2xl relative ml-8 max-w-sm"
-          >
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-primary" />
-              </div>
-              <div>
-                <h4 className="text-xs font-bold text-white">Milestone Achieved</h4>
-                <p className="text-[10px] text-muted-foreground">Frontend Component Architecture completed</p>
-              </div>
-            </div>
-          </motion.div>
+        {/* Interactive Mascot Hero */}
+        <div className="my-auto relative max-w-lg mx-auto w-full h-[400px]">
+          <MascotHero />
         </div>
 
         {/* Bottom review quote */}
