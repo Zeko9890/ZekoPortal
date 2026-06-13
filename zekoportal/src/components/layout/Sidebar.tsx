@@ -12,8 +12,6 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
-  ShieldCheck,
-  Circle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mockUserProfile } from "@/lib/mock-data";
@@ -36,9 +34,9 @@ const menuItems: NavItem[] = [
 ];
 
 const recentProjects = [
-  { name: "Skynet Redesign", id: "proj-1", color: "bg-violet-500" },
-  { name: "AI Engine API", id: "proj-2", color: "bg-emerald-500" },
-  { name: "Mobile App", id: "proj-3", color: "bg-amber-500" },
+  { name: "Skynet Redesign", id: "proj-1", color: "bg-orange-400" },
+  { name: "AI Engine API", id: "proj-2", color: "bg-emerald-400" },
+  { name: "Mobile App", id: "proj-3", color: "bg-amber-400" },
 ];
 
 export default function Sidebar() {
@@ -55,25 +53,25 @@ export default function Sidebar() {
   return (
     <aside
       className={cn(
-        "hidden md:flex flex-col h-screen bg-[hsl(240_10%_3%)] border-r border-border/60 transition-all duration-300 relative z-20 shrink-0",
-        isCollapsed ? "w-[72px]" : "w-64"
+        "hidden md:flex flex-col h-screen bg-[#0A0A0A] border-r border-[#262626] transition-all duration-200 relative z-20 shrink-0",
+        isCollapsed ? "w-[68px]" : "w-60"
       )}
     >
-      {/* ── Brand Header ───────────────────────────────────────── */}
-      <div className="h-[60px] flex items-center px-4 border-b border-border/60 shrink-0">
-        <Link href="/dashboard" className="flex items-center gap-3 min-w-0">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary shadow-lg shadow-primary/30 font-bold text-sm text-white select-none">
+      {/* ── Brand Header ── */}
+      <div className="h-[56px] flex items-center px-4 border-b border-[#262626] shrink-0">
+        <Link href="/dashboard" className="flex items-center gap-2.5 min-w-0">
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary font-bold text-xs text-white select-none">
             Z
           </div>
           <AnimatePresence>
             {!isCollapsed && (
               <motion.span
                 key="brand"
-                initial={{ opacity: 0, x: -6 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -6 }}
-                transition={{ duration: 0.18 }}
-                className="font-bold tracking-tight text-white text-[15px] whitespace-nowrap"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="font-semibold tracking-tight text-white text-sm whitespace-nowrap"
               >
                 Zeko<span className="text-primary">Portal</span>
               </motion.span>
@@ -82,8 +80,8 @@ export default function Sidebar() {
         </Link>
       </div>
 
-      {/* ── Navigation ─────────────────────────────────────────── */}
-      <div className="flex-1 py-5 px-3 flex flex-col gap-6 overflow-y-auto">
+      {/* ── Navigation ── */}
+      <div className="flex-1 py-4 px-2 flex flex-col gap-5 overflow-y-auto">
         {/* Main nav */}
         <div className="flex flex-col gap-0.5">
           {menuItems.map((item) => {
@@ -95,16 +93,16 @@ export default function Sidebar() {
               <Link key={item.name} href={item.href}>
                 <div
                   className={cn(
-                    "group relative flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-all duration-150 cursor-pointer nav-item",
+                    "group relative flex items-center gap-2.5 px-3 py-2 rounded-md text-[13px] font-medium transition-all duration-100 cursor-pointer nav-item",
                     isActive
                       ? "nav-active text-white"
-                      : "text-[hsl(240_5%_58%)] hover:bg-white/5 hover:text-zinc-200"
+                      : "text-[#737373] hover:bg-white/4 hover:text-[#FAFAFA]"
                   )}
                 >
                   <Icon
                     className={cn(
-                      "h-4 w-4 shrink-0 transition-colors duration-150",
-                      isActive ? "text-primary" : "group-hover:text-zinc-300"
+                      "h-4 w-4 shrink-0 transition-colors duration-100",
+                      isActive ? "text-primary" : "group-hover:text-[#FAFAFA]"
                     )}
                   />
 
@@ -115,7 +113,7 @@ export default function Sidebar() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.15 }}
+                        transition={{ duration: 0.12 }}
                         className="flex-1 truncate"
                       >
                         {item.name}
@@ -125,19 +123,19 @@ export default function Sidebar() {
 
                   {/* Badge */}
                   {item.badge && !isCollapsed && (
-                    <span className="ml-auto flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white leading-none">
+                    <span className="ml-auto flex h-[17px] min-w-[17px] items-center justify-center rounded-full bg-primary/15 px-1 text-[10px] font-semibold text-primary leading-none">
                       {item.badge}
                     </span>
                   )}
                   {item.badge && isCollapsed && (
-                    <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-primary ring-2 ring-[hsl(240_10%_3%)]" />
+                    <span className="absolute top-1 right-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
                   )}
 
-                  {/* Tooltip in collapsed mode */}
+                  {/* Tooltip */}
                   {isCollapsed && (
-                    <div className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-zinc-900 border border-border px-2.5 py-1.5 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-xl z-50">
+                    <div className="pointer-events-none absolute left-[calc(100%+10px)] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#111111] border border-[#262626] px-2.5 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-xl z-50">
                       {item.name}
-                      <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-zinc-900" />
+                      <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-[#262626]" />
                     </div>
                   )}
                 </div>
@@ -154,13 +152,13 @@ export default function Sidebar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="flex flex-col gap-1"
+              transition={{ duration: 0.15 }}
+              className="flex flex-col gap-0.5"
             >
-              <p className="heading-section px-3 mb-1">Recent Projects</p>
+              <p className="heading-section px-3 mb-1.5">Recent</p>
               {recentProjects.map((project) => (
                 <Link key={project.id} href={`/projects/${project.id}`}>
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-md text-[11px] font-medium text-[hsl(240_5%_52%)] hover:bg-white/5 hover:text-zinc-300 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-md text-[12px] font-medium text-[#737373] hover:bg-white/4 hover:text-[#FAFAFA] transition-colors cursor-pointer">
                     <span
                       className={cn(
                         "h-1.5 w-1.5 rounded-full shrink-0",
@@ -176,19 +174,19 @@ export default function Sidebar() {
         </AnimatePresence>
       </div>
 
-      {/* ── User Footer ────────────────────────────────────────── */}
-      <div className="shrink-0 border-t border-border/60 p-3 space-y-1">
+      {/* ── User Footer ── */}
+      <div className="shrink-0 border-t border-[#262626] p-2 space-y-0.5">
         <div
           className={cn(
-            "flex items-center gap-3 p-2 rounded-md",
-            isCollapsed && "justify-center"
+            "flex items-center gap-2.5 px-3 py-2 rounded-md",
+            isCollapsed && "justify-center px-0"
           )}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={user?.photoURL || mockUserProfile.avatar}
             alt={user?.displayName || "User"}
-            className="h-7 w-7 shrink-0 rounded-full border border-border/80 object-cover"
+            className="h-6 w-6 shrink-0 rounded-full border border-[#262626] object-cover"
           />
           <AnimatePresence>
             {!isCollapsed && (
@@ -197,15 +195,14 @@ export default function Sidebar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.12 }}
                 className="flex flex-col min-w-0"
               >
-                <span className="text-xs font-semibold text-white truncate leading-tight">
+                <span className="text-[12px] font-medium text-white truncate leading-tight">
                   {user?.displayName || "Portal User"}
                 </span>
-                <span className="flex items-center gap-1 text-[10px] text-muted-foreground mt-0.5">
-                  <ShieldCheck className="h-2.5 w-2.5 text-primary shrink-0" />
-                  <span className="truncate">{user?.email || "No email"}</span>
+                <span className="text-[10px] text-[#737373] truncate mt-0.5">
+                  {user?.email || "No email"}
                 </span>
               </motion.div>
             )}
@@ -219,21 +216,24 @@ export default function Sidebar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
+              transition={{ duration: 0.12 }}
             >
-              <button onClick={handleLogout} className="flex items-center w-full gap-2.5 px-3 py-2 rounded-md text-xs font-medium text-muted-foreground hover:bg-red-500/8 hover:text-red-400 transition-colors cursor-pointer">
+              <button
+                onClick={handleLogout}
+                className="flex items-center w-full gap-2.5 px-3 py-2 rounded-md text-[12px] font-medium text-[#737373] hover:bg-red-500/6 hover:text-red-400 transition-colors cursor-pointer"
+              >
                 <LogOut className="h-3.5 w-3.5 shrink-0" />
-                <span>Log out</span>
+                <span>Sign out</span>
               </button>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* ── Collapse Toggle ─────────────────────────────────────── */}
+      {/* ── Collapse Toggle ── */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute -right-3 top-[72px] flex h-6 w-6 items-center justify-center rounded-full border border-border bg-[hsl(240_10%_6%)] text-muted-foreground hover:text-white shadow-md hover:bg-zinc-900 cursor-pointer transition-colors z-30"
+        className="absolute -right-3 top-[68px] flex h-5 w-5 items-center justify-center rounded-full border border-[#262626] bg-[#111111] text-[#737373] hover:text-white shadow-md hover:border-[#404040] cursor-pointer transition-colors z-30"
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
         {isCollapsed ? (

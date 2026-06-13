@@ -25,7 +25,7 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased dark`}
       style={{ colorScheme: "dark" }}
     >
-      <body className="min-h-full flex flex-col font-sans bg-background text-foreground grid-bg">
+      <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
         <AuthProvider>
           {children}
         </AuthProvider>

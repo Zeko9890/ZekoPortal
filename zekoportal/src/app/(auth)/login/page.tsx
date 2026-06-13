@@ -56,19 +56,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen w-screen flex bg-zinc-950 text-white overflow-hidden relative">
-      {/* Background Decorative Lights */}
-      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-violet-600/10 blur-[100px] pointer-events-none" />
-
+    <div className="min-h-screen w-screen flex bg-[#0A0A0A] text-white overflow-hidden relative">
       {/* Left Panel: Form */}
       <div className="w-full lg:w-[48%] flex flex-col justify-between p-6 md:p-12 relative z-10">
         {/* Brand Header */}
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-white font-bold text-lg shadow-lg shadow-primary/20">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary text-white font-bold text-sm shadow-none select-none">
             Z
           </div>
-          <span className="font-bold tracking-tight text-base">
+          <span className="font-semibold tracking-tight text-base">
             Zeko<span className="text-primary">Portal</span>
           </span>
         </div>
@@ -113,7 +109,7 @@ export default function LoginPage() {
                   placeholder="john@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-10 placeholder:text-muted-foreground/50"
+                  className="bg-[#111111] border-[#262626] h-10 placeholder:text-[#525252] focus:border-[#404040] focus:ring-0"
                   disabled={isLoading || isSuccess}
                 />
               </div>
@@ -134,7 +130,7 @@ export default function LoginPage() {
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="bg-zinc-900/60 border-border/80 h-10 pr-10 placeholder:text-muted-foreground/50"
+                    className="bg-[#111111] border-[#262626] h-10 pr-10 placeholder:text-[#525252] focus:border-[#404040] focus:ring-0"
                     disabled={isLoading || isSuccess}
                   />
                   <button
@@ -212,8 +208,8 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right Panel: Branding Illustration (hidden on mobile/tablet) */}
-      <div className="hidden lg:flex lg:w-[52%] bg-zinc-900/40 border-l border-border relative flex-col justify-between p-12 overflow-hidden">
+      {/* Right Panel */}
+      <div className="hidden lg:flex lg:w-[52%] bg-[#111111] border-l border-[#262626] relative flex-col justify-between p-12 overflow-hidden">
         {/* Abstract dot/grid overlay */}
         <div className="absolute inset-0 grid-bg opacity-45 pointer-events-none" />
         <div className="absolute top-1/4 right-1/4 w-80 h-80 rounded-full bg-primary/20 blur-[100px] pointer-events-none animate-pulse-slow" />

@@ -2,101 +2,99 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles, TrendingUp, FolderKanban, ArrowRight } from "lucide-react";
+import { TrendingUp, FolderKanban, ArrowRight } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 import { useProjects } from "@/lib/projects-context";
 
 export default function WelcomeCard() {
   const { user } = useAuth();
   const { projects, loading } = useProjects();
-  
+
   const hour = new Date().getHours();
   const greeting =
     hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
   const activeCount = projects.filter((p) => p.status === "active").length;
   const reviewCount = projects.filter((p) => p.status === "in_review").length;
-  const totalProgress = projects.length > 0
-    ? Math.round(projects.reduce((a, p) => a + p.progress, 0) / projects.length)
-    : 0;
+  const totalProgress =
+    projects.length > 0
+      ? Math.round(
+          projects.reduce((a, p) => a + p.progress, 0) / projects.length
+        )
+      : 0;
 
   return (
-    <div className="relative w-full rounded-xl border border-white/8 overflow-hidden">
-      {/* Gradient background layer */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/12 via-primary/4 to-transparent pointer-events-none" />
-      <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-primary/10 blur-[80px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-violet-600/8 blur-[60px] translate-y-1/2 pointer-events-none" />
-
-      {/* Subtle grid overlay */}
-      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
-
-      {/* Content */}
-      <div className="relative px-6 py-7 md:px-8 md:py-8 z-10">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+    <div className="w-full rounded-lg border border-[#262626] bg-[#111111] overflow-hidden">
+      <div className="px-6 py-6 md:px-7 md:py-7">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
           {/* Left: greeting & summary */}
           <div className="space-y-3 max-w-2xl">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-primary/25 bg-primary/10 text-[10px] font-bold text-primary uppercase tracking-widest">
-                <Sparkles className="h-3 w-3" />
-                Client Portal Active
-              </div>
+            {/* Status pill */}
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[#262626] bg-[#0A0A0A] text-[10px] font-semibold text-[#A3A3A3] uppercase tracking-wider">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              Client Portal
             </div>
 
             <div className="space-y-1">
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
+              <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-white">
                 {greeting},{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">
+                <span className="text-[#A3A3A3]">
                   {user?.displayName?.split(" ")[0] || "User"}
                 </span>
               </h2>
               {loading ? (
-                 <div className="h-4 w-48 bg-white/10 rounded animate-pulse mt-2" />
+                <div className="h-4 w-52 skeleton rounded mt-1" />
               ) : (
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
+                <p className="text-sm text-[#A3A3A3] leading-relaxed">
                   You have{" "}
-                  <span className="font-semibold text-white">{activeCount} active project{activeCount !== 1 ? "s" : ""}</span>{" "}
+                  <span className="font-medium text-white">
+                    {activeCount} active project{activeCount !== 1 ? "s" : ""}
+                  </span>{" "}
                   in development
                   {reviewCount > 0 && (
                     <>
                       {" "}and{" "}
-                      <span className="font-semibold text-amber-400">
-                        {reviewCount} awaiting your review
+                      <span className="font-medium text-amber-400">
+                        {reviewCount} awaiting review
                       </span>
                     </>
                   )}
-                  . Your portfolio is{" "}
-                  <span className="font-semibold text-white">{totalProgress}% complete</span> overall.
+                  . Portfolio is{" "}
+                  <span className="font-medium text-white">
+                    {totalProgress}% complete
+                  </span>
+                  .
                 </p>
               )}
             </div>
 
-            {/* Inline mini stat pills */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/8 text-xs font-medium text-zinc-300">
+            {/* Stat pills */}
+            <div className="flex flex-wrap gap-2 pt-0.5">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#262626] bg-[#0A0A0A] text-xs font-medium text-[#A3A3A3]">
                 <TrendingUp className="h-3 w-3 text-primary" />
                 {activeCount} Active
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/8 text-xs font-medium text-zinc-300">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#262626] bg-[#0A0A0A] text-xs font-medium text-[#A3A3A3]">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
                 {reviewCount} In Review
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/8 text-xs font-medium text-zinc-300">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#262626] bg-[#0A0A0A] text-xs font-medium text-[#A3A3A3]">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                {totalProgress}% Portfolio Progress
+                {totalProgress}% Overall
               </div>
             </div>
           </div>
 
           {/* Right: CTA buttons */}
-          <div className="flex flex-row md:flex-col gap-2.5 shrink-0">
+          <div className="flex flex-row md:flex-col gap-2 shrink-0">
             <Link href="/projects">
-              <button className="flex items-center gap-2 h-9 px-4 rounded-lg border border-border/80 bg-white/5 text-xs font-semibold text-white hover:bg-white/10 hover:border-border active:scale-95 transition-all cursor-pointer whitespace-nowrap">
-                <FolderKanban className="h-3.5 w-3.5 text-primary" />
+              <button className="flex items-center gap-2 h-8 px-3.5 rounded-md border border-[#262626] bg-[#0A0A0A] text-xs font-medium text-white hover:bg-[#1a1a1a] hover:border-[#404040] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap">
+                <FolderKanban className="h-3.5 w-3.5 text-[#A3A3A3]" />
                 Browse Projects
               </button>
             </Link>
             <Link href="/messages">
-              <button className="flex items-center gap-2 h-9 px-4 rounded-lg bg-primary text-xs font-semibold text-white hover:bg-primary/90 shadow-md shadow-primary/25 active:scale-95 transition-all cursor-pointer whitespace-nowrap">
+              <button className="flex items-center gap-2 h-8 px-3.5 rounded-md bg-primary text-xs font-medium text-white hover:bg-primary/90 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap">
                 Send Message
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
