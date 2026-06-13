@@ -34,7 +34,7 @@ const menuItems: NavItem[] = [
 ];
 
 const recentProjects = [
-  { name: "Skynet Redesign", id: "proj-1", color: "bg-orange-400" },
+  { name: "Skynet Redesign", id: "proj-1", color: "bg-sky-400" },
   { name: "AI Engine API", id: "proj-2", color: "bg-emerald-400" },
   { name: "Mobile App", id: "proj-3", color: "bg-amber-400" },
 ];
@@ -53,12 +53,12 @@ export default function Sidebar() {
   return (
     <aside
       className={cn(
-        "hidden md:flex flex-col h-screen bg-[#0A0A0A] border-r border-[#262626] transition-all duration-200 relative z-20 shrink-0",
+        "hidden md:flex flex-col h-screen bg-[#09090B] border-r border-[#27272A] transition-all duration-200 relative z-20 shrink-0",
         isCollapsed ? "w-[68px]" : "w-60"
       )}
     >
       {/* ── Brand Header ── */}
-      <div className="h-[56px] flex items-center px-4 border-b border-[#262626] shrink-0">
+      <div className="h-[56px] flex items-center px-4 border-b border-[#27272A] shrink-0">
         <Link href="/dashboard" className="flex items-center gap-2.5 min-w-0">
           <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary font-bold text-xs text-white select-none">
             Z
@@ -96,7 +96,7 @@ export default function Sidebar() {
                     "group relative flex items-center gap-2.5 px-3 py-2 rounded-md text-[13px] font-medium transition-all duration-100 cursor-pointer nav-item",
                     isActive
                       ? "nav-active text-white"
-                      : "text-[#737373] hover:bg-white/4 hover:text-[#FAFAFA]"
+                      : "text-[#A1A1AA] hover:bg-white/4 hover:text-[#FAFAFA]"
                   )}
                 >
                   <Icon
@@ -133,9 +133,9 @@ export default function Sidebar() {
 
                   {/* Tooltip */}
                   {isCollapsed && (
-                    <div className="pointer-events-none absolute left-[calc(100%+10px)] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#111111] border border-[#262626] px-2.5 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-xl z-50">
+                    <div className="pointer-events-none absolute left-[calc(100%+10px)] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-[#111827] border border-[#27272A] px-2.5 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-xl z-50">
                       {item.name}
-                      <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-[#262626]" />
+                      <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-[#27272A]" />
                     </div>
                   )}
                 </div>
@@ -158,7 +158,7 @@ export default function Sidebar() {
               <p className="heading-section px-3 mb-1.5">Recent</p>
               {recentProjects.map((project) => (
                 <Link key={project.id} href={`/projects/${project.id}`}>
-                  <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-md text-[12px] font-medium text-[#737373] hover:bg-white/4 hover:text-[#FAFAFA] transition-colors cursor-pointer">
+                  <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-md text-[12px] font-medium text-[#A1A1AA] hover:bg-white/4 hover:text-[#FAFAFA] transition-colors cursor-pointer">
                     <span
                       className={cn(
                         "h-1.5 w-1.5 rounded-full shrink-0",
@@ -175,7 +175,7 @@ export default function Sidebar() {
       </div>
 
       {/* ── User Footer ── */}
-      <div className="shrink-0 border-t border-[#262626] p-2 space-y-0.5">
+      <div className="shrink-0 border-t border-[#27272A] p-2 space-y-0.5">
         <div
           className={cn(
             "flex items-center gap-2.5 px-3 py-2 rounded-md",
@@ -186,7 +186,7 @@ export default function Sidebar() {
           <img
             src={user?.photoURL || mockUserProfile.avatar}
             alt={user?.displayName || "User"}
-            className="h-6 w-6 shrink-0 rounded-full border border-[#262626] object-cover"
+            className="h-6 w-6 shrink-0 rounded-full border border-[#27272A] object-cover"
           />
           <AnimatePresence>
             {!isCollapsed && (
@@ -201,7 +201,7 @@ export default function Sidebar() {
                 <span className="text-[12px] font-medium text-white truncate leading-tight">
                   {user?.displayName || "Portal User"}
                 </span>
-                <span className="text-[10px] text-[#737373] truncate mt-0.5">
+                <span className="text-[10px] text-[#A1A1AA] truncate mt-0.5">
                   {user?.email || "No email"}
                 </span>
               </motion.div>
@@ -220,7 +220,7 @@ export default function Sidebar() {
             >
               <button
                 onClick={handleLogout}
-                className="flex items-center w-full gap-2.5 px-3 py-2 rounded-md text-[12px] font-medium text-[#737373] hover:bg-red-500/6 hover:text-red-400 transition-colors cursor-pointer"
+                className="flex items-center w-full gap-2.5 px-3 py-2 rounded-md text-[12px] font-medium text-[#A1A1AA] hover:bg-red-500/6 hover:text-red-400 transition-colors cursor-pointer"
               >
                 <LogOut className="h-3.5 w-3.5 shrink-0" />
                 <span>Sign out</span>
@@ -233,7 +233,7 @@ export default function Sidebar() {
       {/* ── Collapse Toggle ── */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute -right-3 top-[68px] flex h-5 w-5 items-center justify-center rounded-full border border-[#262626] bg-[#111111] text-[#737373] hover:text-white shadow-md hover:border-[#404040] cursor-pointer transition-colors z-30"
+        className="absolute -right-3 top-[68px] flex h-5 w-5 items-center justify-center rounded-full border border-[#27272A] bg-[#111827] text-[#A1A1AA] hover:text-white shadow-md hover:border-[#404040] cursor-pointer transition-colors z-30"
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
         {isCollapsed ? (

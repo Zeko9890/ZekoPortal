@@ -4,36 +4,36 @@
 
 :root {
   /* ── Surfaces ─────────────────────────────── */
-  --background: 0 0% 4%;          /* #0A0A0A */
+  --background: 240 10% 4%;       /* #09090B */
   --foreground: 0 0% 98%;         /* #FAFAFA */
 
-  --card: 0 0% 7%;                /* #111111 */
+  --card: 221 39% 11%;            /* #111827 */
   --card-foreground: 0 0% 98%;
 
-  --popover: 0 0% 6%;
+  --popover: 221 39% 11%;
   --popover-foreground: 0 0% 98%;
 
-  /* ── Brand: Orange accent ─────────────────── */
-  --primary: 25 95% 53%;          /* #F97316 */
+  /* ── Brand: Light Blue accent ─────────────── */
+  --primary: 199 89% 60%;         /* #38BDF8 */
   --primary-foreground: 0 0% 100%;
 
   /* ── Supporting tones ────────────────────── */
-  --secondary: 0 0% 10%;
+  --secondary: 240 5% 16%;
   --secondary-foreground: 0 0% 98%;
 
-  --muted: 0 0% 10%;
-  --muted-foreground: 0 0% 64%;   /* #A3A3A3 */
+  --muted: 240 5% 16%;
+  --muted-foreground: 240 5% 65%; /* #A1A1AA */
 
-  --accent: 0 0% 12%;
+  --accent: 199 89% 48%;          /* #0EA5E9 */
   --accent-foreground: 0 0% 98%;
 
-  --destructive: 0 72% 51%;
+  --destructive: 0 84% 60%;       /* #EF4444 */
   --destructive-foreground: 0 0% 98%;
 
   /* ── Chrome ───────────────────────────────── */
-  --border: 0 0% 15%;             /* #262626 */
-  --input: 0 0% 10%;
-  --ring: 25 95% 53%;
+  --border: 240 5% 16%;           /* #27272A */
+  --input: 221 39% 11%;
+  --ring: 199 89% 60%;
 
   --radius: 0.375rem;
 
@@ -122,15 +122,15 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(0 0% 18%);
+  background: hsl(240 5% 26%);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(0 0% 28%);
+  background: hsl(240 5% 36%);
 }
 
 /* ============================================
-   SURFACE UTILITIES (replaces glassmorphism)
+   SURFACE UTILITIES
    ============================================ */
 .surface-1 {
   background: hsl(var(--background));
@@ -159,8 +159,8 @@ body {
 .grid-bg {
   background-size: 32px 32px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
 }
 
 /* ============================================
@@ -170,7 +170,7 @@ body {
   transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
 }
 .card-hover:hover {
-  border-color: hsl(0 0% 22%);
+  border-color: hsl(240 5% 32%);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   transform: translateY(-1px);
 }
@@ -179,7 +179,7 @@ body {
   transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
 }
 .card-interactive:hover {
-  border-color: hsl(0 0% 22%);
+  border-color: hsl(240 5% 32%);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
   transform: translateY(-1px);
 }
@@ -188,23 +188,23 @@ body {
    STATUS DOTS
    ============================================ */
 .status-active {
-  background: hsl(158 64% 52%);
+  background: hsl(199 89% 60%); /* sky-400 */
 }
 .status-review {
-  background: hsl(38 92% 60%);
+  background: hsl(38 92% 50%); /* amber-500 */
 }
 .status-hold {
-  background: hsl(0 0% 42%);
+  background: hsl(240 5% 42%);
 }
 .status-complete {
-  background: hsl(142 71% 45%);
+  background: hsl(142 71% 45%); /* green-500 */
 }
 
 /* ============================================
-   SIDEBAR ACTIVE STATE — orange left bar
+   SIDEBAR ACTIVE STATE — blue left bar
    ============================================ */
 .nav-active {
-  background: hsl(25 95% 53% / 0.08);
+  background: hsl(199 89% 60% / 0.08);
   border-left: 2px solid hsl(var(--primary));
   padding-left: calc(0.75rem - 2px);
   color: white;
@@ -219,9 +219,9 @@ body {
 .skeleton {
   background: linear-gradient(
     90deg,
-    hsl(0 0% 10%) 0%,
-    hsl(0 0% 15%) 50%,
-    hsl(0 0% 10%) 100%
+    hsl(240 5% 10%) 0%,
+    hsl(240 5% 15%) 50%,
+    hsl(240 5% 10%) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 1.8s ease-in-out infinite;
@@ -239,7 +239,7 @@ body {
    MESSAGE BUBBLES
    ============================================ */
 .bubble-client {
-  background: hsl(25 95% 53%);
+  background: hsl(199 89% 60%);
   color: white;
 }
 
@@ -252,7 +252,7 @@ body {
    PROGRESS BAR COLORS
    ============================================ */
 .progress-active {
-  background: hsl(25 95% 53%);
+  background: hsl(199 89% 60%);
 }
 .progress-review {
   background: hsl(38 92% 55%);
@@ -261,7 +261,7 @@ body {
   background: hsl(142 71% 42%);
 }
 .progress-hold {
-  background: hsl(0 0% 30%);
+  background: hsl(240 5% 30%);
 }
 
 /* ============================================

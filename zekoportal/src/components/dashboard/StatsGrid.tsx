@@ -31,8 +31,8 @@ export default function StatsGrid() {
       value: activeCount,
       description: "Under development",
       icon: Layers,
-      iconColor: "text-orange-400",
-      accentColor: "bg-orange-400",
+      iconColor: "text-sky-400",
+      accentColor: "bg-sky-400",
       link: "/projects?status=active",
     },
     {
@@ -71,15 +71,15 @@ export default function StatsGrid() {
 
         return (
           <Link key={i} href={stat.link} className="block group">
-            <div className="h-full rounded-lg border border-[#262626] bg-[#111111] p-4 relative overflow-hidden hover:border-[#404040] hover:bg-[#161616] transition-all duration-150">
+            <div className="h-full rounded-lg border border-[#27272A] bg-[#111827] p-4 relative overflow-hidden hover:border-[#3F3F46] hover:bg-[#1F2937] transition-all duration-150">
               {/* Top accent line */}
               <div className={cn("absolute top-0 left-0 right-0 h-[1px] opacity-60", stat.accentColor)} />
 
               <div className="flex justify-between items-start mb-3">
-                <span className="text-[10px] font-semibold text-[#737373] uppercase tracking-wider">
+                <span className="text-[10px] font-semibold text-[#A1A1AA] uppercase tracking-wider">
                   {stat.title}
                 </span>
-                <div className={cn("h-7 w-7 rounded-md bg-[#1a1a1a] border border-[#262626] flex items-center justify-center shrink-0", stat.iconColor)}>
+                <div className={cn("h-7 w-7 rounded-md bg-[#1F2937] border border-[#27272A] flex items-center justify-center shrink-0", stat.iconColor)}>
                   <Icon className="h-3.5 w-3.5" />
                 </div>
               </div>
@@ -92,11 +92,11 @@ export default function StatsGrid() {
                 )}
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t border-[#1a1a1a]">
-                <span className="text-[11px] text-[#737373]">
+              <div className="flex items-center justify-between pt-3 border-t border-[#1F2937]">
+                <span className="text-[11px] text-[#A1A1AA]">
                   {stat.description}
                 </span>
-                <ArrowRight className="h-3.5 w-3.5 text-[#525252] group-hover:text-[#A3A3A3] group-hover:translate-x-0.5 transition-all duration-150" />
+                <ArrowRight className="h-3.5 w-3.5 text-[#71717A] group-hover:text-white group-hover:translate-x-0.5 transition-all duration-150" />
               </div>
             </div>
           </Link>

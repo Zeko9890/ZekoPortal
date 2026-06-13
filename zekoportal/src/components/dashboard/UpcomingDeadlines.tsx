@@ -25,14 +25,14 @@ export default function UpcomingDeadlines() {
   };
 
   return (
-    <div className="rounded-lg border border-[#262626] bg-[#111111] p-5 h-full flex flex-col">
-      <div className="flex justify-between items-center pb-4 mb-4 border-b border-[#262626]">
+    <div className="rounded-lg border border-[#27272A] bg-[#111827] p-5 h-full flex flex-col">
+      <div className="flex justify-between items-center pb-4 mb-4 border-b border-[#27272A]">
         <h3 className="text-[12px] font-semibold text-white uppercase tracking-wider flex items-center gap-2">
           <CalendarDays className="h-3.5 w-3.5 text-primary" />
           Deadlines
         </h3>
         <Link href="/projects">
-          <button className="text-[10px] font-medium text-[#737373] hover:text-white uppercase tracking-wider transition-colors flex items-center gap-1 cursor-pointer">
+          <button className="text-[10px] font-medium text-[#A1A1AA] hover:text-white uppercase tracking-wider transition-colors flex items-center gap-1 cursor-pointer">
             View All <ArrowUpRight className="h-3 w-3" />
           </button>
         </Link>
@@ -46,11 +46,11 @@ export default function UpcomingDeadlines() {
         </div>
       ) : upcomingDeadlines.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center text-center gap-2 p-6">
-          <div className="h-8 w-8 rounded-md bg-[#1a1a1a] border border-[#262626] flex items-center justify-center mb-1">
-            <Clock className="h-4 w-4 text-[#525252]" />
+          <div className="h-8 w-8 rounded-md bg-[#1F2937] border border-[#27272A] flex items-center justify-center mb-1">
+            <Clock className="h-4 w-4 text-[#71717A]" />
           </div>
           <p className="text-sm font-medium text-white">All clear</p>
-          <p className="text-xs text-[#737373] max-w-[180px] leading-relaxed">
+          <p className="text-xs text-[#A1A1AA] max-w-[180px] leading-relaxed">
             No pending deadlines. All milestones are on track.
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function UpcomingDeadlines() {
             return (
               <div
                 key={deadline.id}
-                className="flex flex-col gap-2.5 p-3.5 rounded-md border border-[#262626] bg-[#0A0A0A] hover:border-[#404040] hover:bg-[#141414] transition-all"
+                className="flex flex-col gap-2.5 p-3.5 rounded-md border border-[#27272A] bg-[#09090B] hover:border-[#3F3F46] hover:bg-[#1E293B] transition-all"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="space-y-0.5 min-w-0 flex-1">
@@ -71,7 +71,7 @@ export default function UpcomingDeadlines() {
                     </p>
                     <Link
                       href={`/projects/${deadline.projectId}`}
-                      className="text-[11px] text-[#737373] hover:text-white flex items-center gap-1 mt-0.5 transition-colors"
+                      className="text-[11px] text-[#A1A1AA] hover:text-white flex items-center gap-1 mt-0.5 transition-colors"
                     >
                       {deadline.projectName}
                     </Link>
@@ -91,11 +91,11 @@ export default function UpcomingDeadlines() {
                 </div>
 
                 <div className="flex items-center justify-between text-[11px]">
-                  <div className="flex items-center gap-1.5 text-[#737373]">
+                  <div className="flex items-center gap-1.5 text-[#A1A1AA]">
                     <Clock className="h-3 w-3" />
                     {formatDate(deadline.dueDate)}
                   </div>
-                  <span className="text-[#737373]">
+                  <span className="text-[#A1A1AA]">
                     {deadline.progress}%{" "}
                     <span className="text-white font-medium">complete</span>
                   </span>

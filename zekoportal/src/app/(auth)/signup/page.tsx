@@ -62,7 +62,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen w-screen flex bg-[#0A0A0A] text-white overflow-hidden relative">
+    <div className="min-h-screen w-screen flex bg-[#09090B] text-white overflow-hidden relative">
       {/* Left Panel: Form */}
       <div className="w-full lg:w-[48%] flex flex-col justify-between p-6 md:p-12 relative z-10">
         {/* Brand Header */}
@@ -115,7 +115,7 @@ export default function SignupPage() {
                   placeholder="John Connor"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-9.5 placeholder:text-muted-foreground/50"
+                  className="bg-[#111827] border-[#27272A] h-10 placeholder:text-[#71717A] focus:border-[#3F3F46] focus:ring-0"
                   disabled={isLoading || isSuccess}
                 />
               </div>
@@ -130,7 +130,7 @@ export default function SignupPage() {
                   placeholder="john@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-9.5 placeholder:text-muted-foreground/50"
+                  className="bg-[#111827] border-[#27272A] h-10 placeholder:text-[#71717A] focus:border-[#3F3F46] focus:ring-0"
                   disabled={isLoading || isSuccess}
                 />
               </div>
@@ -160,7 +160,7 @@ export default function SignupPage() {
                   placeholder="At least 6 characters"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-9.5 placeholder:text-muted-foreground/50"
+                  className="bg-[#111827] border-[#27272A] h-10 pr-10 placeholder:text-[#71717A] focus:border-[#3F3F46] focus:ring-0"
                   disabled={isLoading || isSuccess}
                 />
               </div>
@@ -236,7 +236,7 @@ export default function SignupPage() {
       </div>
 
       {/* Right Panel */}
-      <div className="hidden lg:flex lg:w-[52%] bg-[#111111] border-l border-[#262626] relative flex-col justify-between p-12 overflow-hidden">
+      <div className="hidden lg:flex lg:w-[52%] bg-[#111827] border-l border-[#27272A] relative flex-col justify-between p-12 overflow-hidden">
         {/* Grid and lighting overlays */}
         <div className="absolute inset-0 grid-bg opacity-45 pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-primary/20 blur-[100px] pointer-events-none animate-pulse-slow" />

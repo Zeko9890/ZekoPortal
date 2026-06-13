@@ -24,13 +24,13 @@ export default function WelcomeCard() {
       : 0;
 
   return (
-    <div className="w-full rounded-lg border border-[#262626] bg-[#111111] overflow-hidden">
+    <div className="w-full rounded-lg border border-[#27272A] bg-[#111827] overflow-hidden">
       <div className="px-6 py-6 md:px-7 md:py-7">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
           {/* Left: greeting & summary */}
           <div className="space-y-3 max-w-2xl">
             {/* Status pill */}
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[#262626] bg-[#0A0A0A] text-[10px] font-semibold text-[#A3A3A3] uppercase tracking-wider">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[#27272A] bg-[#09090B] text-[10px] font-semibold text-[#A1A1AA] uppercase tracking-wider">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
               Client Portal
             </div>
@@ -38,14 +38,14 @@ export default function WelcomeCard() {
             <div className="space-y-1">
               <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-white">
                 {greeting},{" "}
-                <span className="text-[#A3A3A3]">
+                <span className="text-[#A1A1AA]">
                   {user?.displayName?.split(" ")[0] || "User"}
                 </span>
               </h2>
               {loading ? (
                 <div className="h-4 w-52 skeleton rounded mt-1" />
               ) : (
-                <p className="text-sm text-[#A3A3A3] leading-relaxed">
+                <p className="text-sm text-[#A1A1AA] leading-relaxed">
                   You have{" "}
                   <span className="font-medium text-white">
                     {activeCount} active project{activeCount !== 1 ? "s" : ""}
@@ -70,15 +70,15 @@ export default function WelcomeCard() {
 
             {/* Stat pills */}
             <div className="flex flex-wrap gap-2 pt-0.5">
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#262626] bg-[#0A0A0A] text-xs font-medium text-[#A3A3A3]">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#27272A] bg-[#09090B] text-xs font-medium text-[#A1A1AA]">
                 <TrendingUp className="h-3 w-3 text-primary" />
                 {activeCount} Active
               </div>
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#262626] bg-[#0A0A0A] text-xs font-medium text-[#A3A3A3]">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#27272A] bg-[#09090B] text-xs font-medium text-[#A1A1AA]">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
                 {reviewCount} In Review
               </div>
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#262626] bg-[#0A0A0A] text-xs font-medium text-[#A3A3A3]">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#27272A] bg-[#09090B] text-xs font-medium text-[#A1A1AA]">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                 {totalProgress}% Overall
               </div>
@@ -88,8 +88,8 @@ export default function WelcomeCard() {
           {/* Right: CTA buttons */}
           <div className="flex flex-row md:flex-col gap-2 shrink-0">
             <Link href="/projects">
-              <button className="flex items-center gap-2 h-8 px-3.5 rounded-md border border-[#262626] bg-[#0A0A0A] text-xs font-medium text-white hover:bg-[#1a1a1a] hover:border-[#404040] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap">
-                <FolderKanban className="h-3.5 w-3.5 text-[#A3A3A3]" />
+              <button className="flex items-center gap-2 h-8 px-3.5 rounded-md border border-[#27272A] bg-[#09090B] text-xs font-medium text-white hover:bg-[#1F2937] hover:border-[#3F3F46] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap">
+                <FolderKanban className="h-3.5 w-3.5 text-[#A1A1AA]" />
                 Browse Projects
               </button>
             </Link>

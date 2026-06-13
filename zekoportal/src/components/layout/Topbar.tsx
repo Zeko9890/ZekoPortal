@@ -98,12 +98,12 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
     setNotifications((prev) => prev.map((n) => ({ ...n, unread: false })));
 
   return (
-    <header className="h-[56px] border-b border-[#262626] bg-[#0A0A0A] sticky top-0 z-30 flex items-center justify-between px-5 shrink-0">
+    <header className="h-[56px] border-b border-[#27272A] bg-[#09090B] sticky top-0 z-30 flex items-center justify-between px-5 shrink-0">
       {/* ── Left: hamburger + breadcrumb ── */}
       <div className="flex items-center gap-3">
         <button
           onClick={onMenuClick}
-          className="md:hidden p-1.5 -ml-1 rounded-md text-[#737373] hover:text-white hover:bg-white/5 cursor-pointer transition-colors"
+          className="md:hidden p-1.5 -ml-1 rounded-md text-[#A1A1AA] hover:text-white hover:bg-white/5 cursor-pointer transition-colors"
           aria-label="Open menu"
         >
           <Menu className="h-4 w-4" />
@@ -115,11 +115,11 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
             <>
               <Link
                 href="/projects"
-                className="text-[#737373] hover:text-white transition-colors font-medium"
+                className="text-[#A1A1AA] hover:text-white transition-colors font-medium"
               >
                 Projects
               </Link>
-              <span className="text-[#404040] text-sm leading-none">/</span>
+              <span className="text-[#3F3F46] text-sm leading-none">/</span>
               <span className="text-white font-semibold">Detail</span>
             </>
           ) : (
@@ -138,15 +138,15 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
       <div className="flex items-center gap-1.5">
         {/* Search */}
         <div className="relative hidden lg:block">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#737373] pointer-events-none" />
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#A1A1AA] pointer-events-none" />
           <input
             type="text"
             placeholder="Search..."
-            className="h-7 w-44 xl:w-56 pl-8 pr-3 rounded-md border border-[#262626] bg-[#111111] text-xs text-white placeholder:text-[#525252] focus:outline-none focus:border-[#404040] focus:ring-0 transition-all"
+            className="h-7 w-44 xl:w-56 pl-8 pr-3 rounded-md border border-[#27272A] bg-[#111827] text-xs text-white placeholder:text-[#A1A1AA] focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all"
           />
         </div>
 
-        <div className="hidden lg:block h-4 w-px bg-[#262626] mx-1" />
+        <div className="hidden lg:block h-4 w-px bg-[#27272A] mx-1" />
 
         {/* Notification bell */}
         <div className="relative" ref={notifRef}>
@@ -155,7 +155,7 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
               setShowNotifications(!showNotifications);
               setShowProfileMenu(false);
             }}
-            className="relative p-2 rounded-md text-[#737373] hover:text-white hover:bg-white/5 cursor-pointer transition-colors"
+            className="relative p-2 rounded-md text-[#A1A1AA] hover:text-white hover:bg-white/5 cursor-pointer transition-colors"
             aria-label="Notifications"
           >
             <Bell className="h-4 w-4" />
@@ -165,8 +165,8 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-[320px] rounded-lg border border-[#262626] bg-[#111111] shadow-2xl z-50 overflow-hidden animate-fade-in">
-              <div className="flex items-center justify-between px-4 py-3 border-b border-[#262626]">
+            <div className="absolute right-0 mt-2 w-[320px] rounded-lg border border-[#27272A] bg-[#111827] shadow-2xl z-50 overflow-hidden animate-fade-in">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[#27272A]">
                 <div className="flex items-center gap-2">
                   <h3 className="text-xs font-semibold text-white">Notifications</h3>
                   {unreadCount > 0 && (
@@ -184,12 +184,12 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
                 </button>
               </div>
 
-              <div className="divide-y divide-[#1a1a1a] max-h-[280px] overflow-y-auto">
+              <div className="divide-y divide-[#1F2937] max-h-[280px] overflow-y-auto">
                 {notifications.map((item) => (
                   <div
                     key={item.id}
-                    className={`flex gap-3 px-4 py-3 hover:bg-white/3 cursor-pointer transition-colors ${
-                      item.unread ? "bg-orange-500/3" : ""
+                    className={`flex gap-3 px-4 py-3 hover:bg-white/5 cursor-pointer transition-colors ${
+                      item.unread ? "bg-primary/5" : ""
                     }`}
                   >
                     <div className="text-sm shrink-0 mt-0.5">{item.icon}</div>
@@ -198,11 +198,11 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
                         <p className="text-[11px] font-medium text-white leading-tight">
                           {item.title}
                         </p>
-                        <span className="text-[9px] text-[#737373] shrink-0 mt-0.5">
+                        <span className="text-[9px] text-[#A1A1AA] shrink-0 mt-0.5">
                           {item.time}
                         </span>
                       </div>
-                      <p className="text-[10px] text-[#737373] mt-0.5 leading-relaxed line-clamp-2">
+                      <p className="text-[10px] text-[#A1A1AA] mt-0.5 leading-relaxed line-clamp-2">
                         {item.desc}
                       </p>
                     </div>
@@ -213,7 +213,7 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
                 ))}
               </div>
 
-              <div className="px-4 py-2.5 border-t border-[#262626] text-center">
+              <div className="px-4 py-2.5 border-t border-[#27272A] text-center">
                 <button className="text-[10px] text-primary hover:text-primary/80 font-medium cursor-pointer transition-colors">
                   View all
                 </button>
@@ -235,7 +235,7 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
             <img
               src={user?.photoURL || mockUserProfile.avatar}
               alt={user?.displayName || "User"}
-              className="h-6 w-6 rounded-full border border-[#262626] object-cover"
+              className="h-6 w-6 rounded-full border border-[#27272A] object-cover"
             />
             <div className="hidden xl:flex flex-col text-left">
               <span className="text-[11px] font-medium text-white leading-tight">
@@ -245,12 +245,12 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
           </button>
 
           {showProfileMenu && (
-            <div className="absolute right-0 mt-2 w-[188px] rounded-lg border border-[#262626] bg-[#111111] shadow-2xl z-50 overflow-hidden animate-fade-in">
-              <div className="px-3 py-3 border-b border-[#262626]">
+            <div className="absolute right-0 mt-2 w-[188px] rounded-lg border border-[#27272A] bg-[#111827] shadow-2xl z-50 overflow-hidden animate-fade-in">
+              <div className="px-3 py-3 border-b border-[#27272A]">
                 <p className="text-[11px] font-semibold text-white truncate">
                   {user?.displayName || "Portal User"}
                 </p>
-                <p className="text-[10px] text-[#737373] truncate mt-0.5">
+                <p className="text-[10px] text-[#A1A1AA] truncate mt-0.5">
                   {user?.email || "No email"}
                 </p>
                 <p className="text-[10px] text-primary truncate mt-0.5 font-medium">
@@ -260,23 +260,23 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
 
               <div className="p-1.5 space-y-0.5">
                 <Link href="/settings" onClick={() => setShowProfileMenu(false)}>
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-md text-xs text-[#737373] hover:bg-white/5 hover:text-white transition-colors cursor-pointer">
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-md text-xs text-[#A1A1AA] hover:bg-white/5 hover:text-white transition-colors cursor-pointer">
                     <User className="h-3.5 w-3.5 shrink-0" />
                     <span>My Profile</span>
                   </div>
                 </Link>
                 <Link href="/settings" onClick={() => setShowProfileMenu(false)}>
-                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-md text-xs text-[#737373] hover:bg-white/5 hover:text-white transition-colors cursor-pointer">
+                  <div className="flex items-center gap-2.5 px-3 py-2 rounded-md text-xs text-[#A1A1AA] hover:bg-white/5 hover:text-white transition-colors cursor-pointer">
                     <Settings className="h-3.5 w-3.5 shrink-0" />
                     <span>Settings</span>
                   </div>
                 </Link>
               </div>
 
-              <div className="p-1.5 border-t border-[#262626]">
+              <div className="p-1.5 border-t border-[#27272A]">
                 <button
                   onClick={() => { setShowProfileMenu(false); handleLogout(); }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-md text-xs text-[#737373] hover:bg-red-500/6 hover:text-red-400 transition-colors cursor-pointer"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-md text-xs text-[#A1A1AA] hover:bg-red-500/6 hover:text-red-400 transition-colors cursor-pointer"
                 >
                   <LogOut className="h-3.5 w-3.5 shrink-0" />
                   <span>Sign out</span>
