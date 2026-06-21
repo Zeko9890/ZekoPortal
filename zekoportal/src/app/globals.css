@@ -283,90 +283,103 @@ body {
 }
 
 /* ============================================
-   LANDING PAGE — Soft Workspace Utilities
+   LANDING PAGE — Premium Density Utilities
    ============================================ */
-.shadow-soft {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.15);
+.glass-panel {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.shadow-soft-lg {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+.border-crisp {
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.border-subtle {
-  border: 1px solid hsl(240 6% 20%);
+.shadow-premium {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
+              0 8px 32px -4px rgba(0, 0, 0, 0.5),
+              0 24px 64px -8px rgba(0, 0, 0, 0.6);
 }
 
-/* Workspace mockup container */
-.workspace-frame {
-  background: hsl(240 6% 10%);
-  border: 1px solid hsl(240 6% 18%);
-  border-radius: 12px;
+.bg-radial-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(56, 189, 248, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+/* Premium Gradient Text */
+.text-gradient-premium {
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Dense Dashboard Mockup Styles */
+.mockup-container {
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
 }
 
-.workspace-frame-titlebar {
-  height: 36px;
-  background: hsl(240 6% 8%);
-  border-bottom: 1px solid hsl(240 6% 16%);
+.mockup-header {
+  background: #0A0A0A;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   padding: 0 12px;
+  height: 32px;
   gap: 6px;
 }
 
-.workspace-frame-dot {
-  width: 10px;
-  height: 10px;
+.mockup-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Floating Elements Animation */
+@keyframes floatUp {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-float-up {
+  animation: floatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Grid Background - Dense */
+.bg-grid-dense {
+  background-size: 24px 24px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 /* ============================================
-   LANDING PAGE — Scroll Reveal (softer)
+   LANDING PAGE — Scroll Reveal (Crisp)
    ============================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-              transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* ============================================
-   LANDING PAGE — Friendly Gradient Text
-   ============================================ */
-.text-gradient-warm {
-  background: linear-gradient(135deg, #60A5FA 0%, #818CF8 50%, #A78BFA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Keep legacy alias for compat */
-.text-gradient-blue {
-  background: linear-gradient(135deg, #60A5FA 0%, #818CF8 50%, #A78BFA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ============================================
-   LANDING PAGE — Interactive Tab Indicator
-   ============================================ */
-.tab-active {
-  position: relative;
-}
-.tab-active::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: hsl(var(--primary));
-  border-radius: 2px 2px 0 0;
 }
 

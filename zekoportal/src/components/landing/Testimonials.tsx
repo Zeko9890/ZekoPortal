@@ -5,30 +5,24 @@ import React, { useEffect, useRef } from "react";
 const testimonials = [
   {
     name: "Sarah Chen",
-    role: "Product Lead",
-    company: "Acme Design",
+    role: "VP Engineering",
+    company: "Acme Corp",
     avatar: "SC",
-    avatarBg: "bg-blue-500/20 text-blue-300",
-    quote:
-      "We replaced three different tools with ZekoPortal. Our clients love the transparency and we've cut status meeting time in half.",
+    quote: "ZekoPortal replaced Jira, Slack, and our scattered Google Docs. The density of information and speed of the UI is unmatched.",
   },
   {
     name: "James Park",
-    role: "Engineering Manager",
-    company: "Globex Tech",
+    role: "Director of Product",
+    company: "Globex",
     avatar: "JP",
-    avatarBg: "bg-emerald-500/20 text-emerald-300",
-    quote:
-      "The approval workflows alone saved us 10+ hours a week. Everything is tracked, timestamped, and accountable. Exactly what we needed.",
+    quote: "We don't do status meetings anymore. Clients log in, approve the work, and we ship. It's fundamentally changed our velocity.",
   },
   {
     name: "Maya Rodriguez",
-    role: "Agency Director",
-    company: "Creative Studio",
+    role: "Agency Lead",
+    company: "Studio X",
     avatar: "MR",
-    avatarBg: "bg-violet-500/20 text-violet-300",
-    quote:
-      "Our clients used to email us constantly for updates. Now they log into ZekoPortal and see everything. It's changed how we run projects.",
+    quote: "The visual automations alone are worth the price. When a file is uploaded, the exact right people are notified instantly.",
   },
 ];
 
@@ -51,44 +45,44 @@ export default function Testimonials() {
   const revealRef = useReveal();
 
   return (
-    <section id="testimonials" className="py-20 md:py-28 relative">
-      <div ref={revealRef} className="reveal max-w-5xl mx-auto px-5 md:px-8">
-        <div className="text-center mb-12">
-          <p className="text-[11px] font-semibold text-blue-400/70 uppercase tracking-widest mb-3">
-            Testimonials
-          </p>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3">
-            Teams love working in ZekoPortal
-          </h2>
-          <p className="text-[14px] text-white/40 max-w-lg mx-auto">
-            Hear from the teams who&apos;ve made it their daily workspace.
-          </p>
+    <section id="testimonials" className="py-20 bg-black relative">
+      <div ref={revealRef} className="reveal max-w-6xl mx-auto px-5 md:px-8">
+        
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-2">
+              Built for top-tier teams.
+            </h2>
+            <p className="text-[14px] text-white/40 max-w-md font-medium">
+              Don't take our word for it. Here's what engineering and product leads say.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="rounded-xl bg-white/[0.02] border border-white/[0.05] p-5 hover:bg-white/[0.035] hover:border-white/[0.08] transition-all duration-200 flex flex-col"
+              className="glass-panel rounded-xl border-crisp p-6 flex flex-col relative overflow-hidden group hover:border-white/20 transition-colors"
             >
-              {/* Quote */}
-              <p className="text-[12px] text-white/50 leading-relaxed flex-1 mb-5">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </div>
+
+              <p className="text-[13px] text-white/70 leading-relaxed flex-1 mb-6 font-medium relative z-10">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              {/* Author */}
-              <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.04]">
-                <div
-                  className={`h-8 w-8 rounded-full ${t.avatarBg} flex items-center justify-center font-bold text-[10px]`}
-                >
+              <div className="flex items-center gap-3 relative z-10">
+                <div className="h-8 w-8 rounded-[6px] bg-white/10 flex items-center justify-center font-bold text-[10px] text-white">
                   {t.avatar}
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold text-white/75">
+                  <p className="text-[11px] font-bold text-white">
                     {t.name}
                   </p>
-                  <p className="text-[10px] text-white/25">
-                    {t.role} · {t.company}
+                  <p className="text-[10px] text-white/40 font-medium">
+                    {t.role} @ {t.company}
                   </p>
                 </div>
               </div>

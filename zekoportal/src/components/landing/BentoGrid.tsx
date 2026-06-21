@@ -1,16 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import {
-  BarChart3,
-  MessageSquare,
-  FileUp,
-  Target,
-  CheckSquare,
-  Users,
-  Zap,
-  Globe,
-} from "lucide-react";
+import { Zap, ShieldCheck, Database, GitBranch } from "lucide-react";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -27,125 +18,113 @@ function useReveal() {
   return ref;
 }
 
-const features = [
-  {
-    icon: BarChart3,
-    title: "Live Dashboards",
-    description: "See every project's progress in real time. No more \"what's the status?\" emails.",
-    span: "md:col-span-2",
-    color: "text-blue-400",
-    colorBg: "bg-blue-500/10",
-    extra: (
-      <div className="flex items-center gap-3 mt-3">
-        <div className="flex -space-x-1.5">
-          <div className="h-5 w-5 rounded-full bg-blue-500/25 border-2 border-[hsl(240_6%_10%)] text-[7px] font-bold text-blue-300 flex items-center justify-center">S</div>
-          <div className="h-5 w-5 rounded-full bg-emerald-500/25 border-2 border-[hsl(240_6%_10%)] text-[7px] font-bold text-emerald-300 flex items-center justify-center">J</div>
-          <div className="h-5 w-5 rounded-full bg-violet-500/25 border-2 border-[hsl(240_6%_10%)] text-[7px] font-bold text-violet-300 flex items-center justify-center">A</div>
-        </div>
-        <span className="text-[10px] text-white/25">3 teammates online</span>
-      </div>
-    ),
-  },
-  {
-    icon: MessageSquare,
-    title: "Threaded Messaging",
-    description: "Conversations live next to the work. Context is never lost.",
-    color: "text-violet-400",
-    colorBg: "bg-violet-500/10",
-  },
-  {
-    icon: CheckSquare,
-    title: "Approval Workflows",
-    description: "Clients review and sign off. Tracked, timestamped, done.",
-    color: "text-emerald-400",
-    colorBg: "bg-emerald-500/10",
-  },
-  {
-    icon: FileUp,
-    title: "File Sharing",
-    description: "Upload, version, and organize deliverables in shared folders.",
-    color: "text-amber-400",
-    colorBg: "bg-amber-500/10",
-  },
-  {
-    icon: Target,
-    title: "Milestones",
-    description: "Set deadlines, track deliverables, and celebrate when you ship.",
-    color: "text-pink-400",
-    colorBg: "bg-pink-500/10",
-  },
-  {
-    icon: Users,
-    title: "Team Management",
-    description: "Invite your whole team. Role-based permissions keep everyone in their lane.",
-    span: "md:col-span-2",
-    color: "text-cyan-400",
-    colorBg: "bg-cyan-500/10",
-    extra: (
-      <div className="flex flex-wrap gap-1.5 mt-3">
-        {["Admin", "Editor", "Viewer", "Client"].map((role) => (
-          <span key={role} className="text-[9px] font-medium text-white/25 bg-white/[0.04] px-2 py-0.5 rounded-full border border-white/[0.04]">
-            {role}
-          </span>
-        ))}
-      </div>
-    ),
-  },
-  {
-    icon: Zap,
-    title: "Automations",
-    description: "Auto-assign tasks, send notifications, and trigger workflows without lifting a finger.",
-    color: "text-yellow-400",
-    colorBg: "bg-yellow-500/10",
-  },
-  {
-    icon: Globe,
-    title: "Client Portal",
-    description: "A branded, client-facing view. They see what they need — nothing more.",
-    color: "text-blue-400",
-    colorBg: "bg-blue-500/10",
-  },
-];
-
 export default function BentoGrid() {
   const revealRef = useReveal();
 
   return (
-    <section id="features" className="py-20 md:py-28 relative">
-      <div ref={revealRef} className="reveal max-w-5xl mx-auto px-5 md:px-8">
-        <div className="text-center mb-12">
-          <p className="text-[11px] font-semibold text-blue-400/70 uppercase tracking-widest mb-3">
-            Features
-          </p>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3">
-            Built for how teams actually work
+    <section id="features" className="py-20 bg-black relative border-t border-white/5">
+      <div ref={revealRef} className="reveal max-w-6xl mx-auto px-5 md:px-8">
+        
+        <div className="mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-3">
+            Engineered for scale.
           </h2>
-          <p className="text-[14px] text-white/40 max-w-lg mx-auto leading-relaxed">
-            Every feature is designed around collaboration — not just task management.
+          <p className="text-[14px] text-white/40 max-w-lg font-medium">
+            Advanced features built right in. No plugins, no complex setups. Just raw productivity.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {features.map((f) => {
-            const Icon = f.icon;
-            return (
-              <div
-                key={f.title}
-                className={`group rounded-xl bg-white/[0.02] border border-white/[0.05] p-5 hover:bg-white/[0.035] hover:border-white/[0.08] transition-all duration-200 ${f.span || ""}`}
-              >
-                <div className={`inline-flex h-8 w-8 items-center justify-center rounded-lg ${f.colorBg} mb-3`}>
-                  <Icon className={`h-4 w-4 ${f.color}`} />
-                </div>
-                <h3 className="text-[13px] font-semibold text-white/85 mb-1">
-                  {f.title}
-                </h3>
-                <p className="text-[11px] text-white/35 leading-relaxed">
-                  {f.description}
-                </p>
-                {f.extra}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          {/* Automation Node UI */}
+          <div className="md:col-span-2 glass-panel rounded-xl border-crisp p-0 overflow-hidden flex flex-col md:flex-row group">
+            <div className="p-6 md:w-1/2 flex flex-col justify-center">
+              <div className="h-8 w-8 rounded-[6px] bg-yellow-500/10 flex items-center justify-center mb-4">
+                <Zap className="h-4 w-4 text-yellow-400" />
               </div>
-            );
-          })}
+              <h3 className="text-[15px] font-bold text-white mb-2">Visual Automations</h3>
+              <p className="text-[12px] text-white/40 font-medium leading-relaxed">
+                Trigger workflows automatically. When a design is approved, immediately notify the engineering team and update the project status without lifting a finger.
+              </p>
+            </div>
+            
+            <div className="md:w-1/2 bg-[#050505] border-t md:border-t-0 md:border-l border-white/5 p-6 relative min-h-[200px] flex items-center justify-center">
+              <div className="absolute inset-0 bg-grid-dense opacity-30" />
+              <div className="relative z-10 flex flex-col items-center gap-2">
+                <div className="bg-[#111] border border-white/10 px-3 py-2 rounded-[6px] text-[10px] font-bold text-white shadow-premium">
+                  IF Status = Approved
+                </div>
+                <div className="h-4 w-px bg-white/20" />
+                <div className="bg-[#111] border border-yellow-500/30 px-3 py-2 rounded-[6px] text-[10px] font-bold text-yellow-400 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
+                  THEN Notify @engineering
+                </div>
+                <div className="h-4 w-px bg-white/20" />
+                <div className="bg-[#111] border border-emerald-500/30 px-3 py-2 rounded-[6px] text-[10px] font-bold text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                  AND Move to "Ready for Dev"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Role Based Access UI */}
+          <div className="md:col-span-1 glass-panel rounded-xl border-crisp p-6 flex flex-col">
+            <div className="h-8 w-8 rounded-[6px] bg-blue-500/10 flex items-center justify-center mb-4">
+              <ShieldCheck className="h-4 w-4 text-blue-400" />
+            </div>
+            <h3 className="text-[15px] font-bold text-white mb-2">Granular Access</h3>
+            <p className="text-[12px] text-white/40 font-medium mb-6">
+              Control exactly who sees what. Keep internal discussions private while giving clients full visibility into deliverables.
+            </p>
+            
+            <div className="mt-auto space-y-2">
+              <div className="flex items-center justify-between p-2 rounded-[6px] bg-[#0A0A0A] border border-white/5">
+                <span className="text-[10px] font-bold text-white/70">Client View</span>
+                <div className="h-2 w-6 rounded-full bg-blue-500" />
+              </div>
+              <div className="flex items-center justify-between p-2 rounded-[6px] bg-[#0A0A0A] border border-white/5">
+                <span className="text-[10px] font-bold text-white/70">Internal Comments</span>
+                <div className="h-2 w-6 rounded-full bg-white/10" />
+              </div>
+            </div>
+          </div>
+
+          {/* Connected Data */}
+          <div className="md:col-span-1 glass-panel rounded-xl border-crisp p-6">
+            <div className="h-8 w-8 rounded-[6px] bg-violet-500/10 flex items-center justify-center mb-4">
+              <Database className="h-4 w-4 text-violet-400" />
+            </div>
+            <h3 className="text-[15px] font-bold text-white mb-2">Single Source of Truth</h3>
+            <p className="text-[12px] text-white/40 font-medium">
+              Files, feedback, and tasks are tightly coupled. No more digging through Slack to find the latest asset link.
+            </p>
+          </div>
+
+          {/* Audit Log UI */}
+          <div className="md:col-span-2 glass-panel rounded-xl border-crisp p-6 flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1">
+              <div className="h-8 w-8 rounded-[6px] bg-emerald-500/10 flex items-center justify-center mb-4">
+                <GitBranch className="h-4 w-4 text-emerald-400" />
+              </div>
+              <h3 className="text-[15px] font-bold text-white mb-2">Comprehensive Audit Trails</h3>
+              <p className="text-[12px] text-white/40 font-medium">
+                Every action is logged and timestamped. Absolute accountability across your entire workspace.
+              </p>
+            </div>
+            
+            <div className="flex-1 w-full bg-[#050505] rounded-[8px] border border-white/10 p-4 space-y-3">
+              {[
+                { user: "Sarah", action: "approved", target: "Homepage v4", time: "2m ago" },
+                { user: "James", action: "uploaded", target: "Brand_Assets.zip", time: "15m ago" },
+                { user: "System", action: "created task", target: "Update Auth Flow", time: "1h ago" }
+              ].map((log, i) => (
+                <div key={i} className="flex justify-between items-center text-[9px] font-mono">
+                  <span className="text-white/60"><span className="text-white font-bold">{log.user}</span> {log.action} <span className="text-blue-400">{log.target}</span></span>
+                  <span className="text-white/30">{log.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
