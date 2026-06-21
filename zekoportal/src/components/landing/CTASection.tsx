@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -10,9 +10,7 @@ function useReveal() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) el.classList.add("visible");
-      },
+      ([entry]) => { if (entry.isIntersecting) el.classList.add("visible"); },
       { threshold: 0.2 }
     );
     observer.observe(el);
@@ -25,34 +23,40 @@ export default function CTASection() {
   const revealRef = useReveal();
 
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
-      <div className="glow-orb w-[600px] h-[600px] bg-primary/6 top-[-20%] left-[30%] absolute" />
-      <div className="glow-orb w-[300px] h-[300px] bg-cyan-500/5 bottom-[10%] right-[15%] absolute" />
+    <section className="py-20 md:py-28 relative overflow-hidden">
+      {/* Gentle background gradient instead of glowing orbs */}
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/[0.02] via-transparent to-transparent pointer-events-none" />
 
-      <div ref={revealRef} className="reveal max-w-3xl mx-auto px-5 md:px-8 text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-5">
-          Ready to streamline
+      <div ref={revealRef} className="reveal max-w-2xl mx-auto px-5 md:px-8 text-center relative z-10">
+        <div className="flex justify-center mb-5">
+          <div className="h-10 w-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <Users className="h-5 w-5 text-blue-400" />
+          </div>
+        </div>
+
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-4">
+          Better together.
           <br />
-          <span className="text-gradient-blue">your client workflow?</span>
+          <span className="text-white/35">Start building your workspace.</span>
         </h2>
-        <p className="text-[#A1A1AA] text-base md:text-lg max-w-lg mx-auto mb-10">
-          Join hundreds of teams already using ZekoPortal to deliver projects
-          faster, communicate better, and keep clients happy.
+        <p className="text-[14px] text-white/40 max-w-md mx-auto mb-8 leading-relaxed">
+          Join 500+ teams who already manage their projects, communicate
+          with clients, and ship work faster through ZekoPortal.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/signup"
-            className="group flex items-center gap-2 bg-primary hover:bg-[#0EA5E9] text-white font-semibold text-sm px-6 py-3 rounded-lg transition-all duration-200 shadow-lg shadow-primary/20"
+            className="group flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-medium text-sm px-5 py-2.5 rounded-lg transition-all duration-200"
           >
-            Get Started Free
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+            Get started free
+            <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
           <Link
             href="/login"
-            className="text-[13px] font-medium text-[#A1A1AA] hover:text-white px-6 py-3 rounded-lg border border-[#27272A] hover:border-[#3F3F46] transition-all duration-200"
+            className="text-[13px] font-medium text-white/40 hover:text-white/60 px-5 py-2.5 rounded-lg border border-white/[0.06] hover:border-white/[0.1] transition-all duration-200"
           >
-            Log in to your portal
+            Sign in to your workspace
           </Link>
         </div>
       </div>

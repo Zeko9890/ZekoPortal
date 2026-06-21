@@ -4,34 +4,31 @@ import React, { useEffect, useRef } from "react";
 
 const testimonials = [
   {
-    initials: "SC",
-    name: "Sarah Connor",
-    role: "Product Director",
-    company: "Skynet Solutions",
+    name: "Sarah Chen",
+    role: "Product Lead",
+    company: "Acme Design",
+    avatar: "SC",
+    avatarBg: "bg-blue-500/20 text-blue-300",
     quote:
-      "ZekoPortal completely transformed how we collaborate with our agency. We went from weekly status emails to real-time visibility across every project.",
-    bgColor: "bg-sky-500/15",
-    borderColor: "border-sky-500/30",
+      "We replaced three different tools with ZekoPortal. Our clients love the transparency and we've cut status meeting time in half.",
   },
   {
-    initials: "JK",
-    name: "James Kirk",
-    role: "VP Engineering",
-    company: "Enterprise Corp",
+    name: "James Park",
+    role: "Engineering Manager",
+    company: "Globex Tech",
+    avatar: "JP",
+    avatarBg: "bg-emerald-500/20 text-emerald-300",
     quote:
-      "The approval workflow alone saved us 12 hours per week. Our team ships faster and clients are happier — it's a win across the board.",
-    bgColor: "bg-emerald-500/15",
-    borderColor: "border-emerald-500/30",
+      "The approval workflows alone saved us 10+ hours a week. Everything is tracked, timestamped, and accountable. Exactly what we needed.",
   },
   {
-    initials: "AR",
-    name: "Alex Rivera",
-    role: "Design Lead",
+    name: "Maya Rodriguez",
+    role: "Agency Director",
     company: "Creative Studio",
+    avatar: "MR",
+    avatarBg: "bg-violet-500/20 text-violet-300",
     quote:
-      "I've used every project management tool out there. ZekoPortal is the first one that actually feels built for agency-client relationships.",
-    bgColor: "bg-primary/15",
-    borderColor: "border-primary/30",
+      "Our clients used to email us constantly for updates. Now they log into ZekoPortal and see everything. It's changed how we run projects.",
   },
 ];
 
@@ -41,9 +38,7 @@ function useReveal() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) el.classList.add("visible");
-      },
+      ([entry]) => { if (entry.isIntersecting) el.classList.add("visible"); },
       { threshold: 0.1 }
     );
     observer.observe(el);
@@ -56,17 +51,17 @@ export default function Testimonials() {
   const revealRef = useReveal();
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 relative">
-      <div ref={revealRef} className="reveal max-w-6xl mx-auto px-5 md:px-8">
-        <div className="text-center mb-14">
-          <p className="text-[11px] font-semibold text-primary uppercase tracking-widest mb-3">
+    <section id="testimonials" className="py-20 md:py-28 relative">
+      <div ref={revealRef} className="reveal max-w-5xl mx-auto px-5 md:px-8">
+        <div className="text-center mb-12">
+          <p className="text-[11px] font-semibold text-blue-400/70 uppercase tracking-widest mb-3">
             Testimonials
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
-            Loved by teams worldwide
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3">
+            Teams love working in ZekoPortal
           </h2>
-          <p className="text-[#A1A1AA] text-base md:text-lg max-w-xl mx-auto">
-            See what teams are saying about working through ZekoPortal.
+          <p className="text-[14px] text-white/40 max-w-lg mx-auto">
+            Hear from the teams who&apos;ve made it their daily workspace.
           </p>
         </div>
 
@@ -74,28 +69,25 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="rounded-xl border border-[#27272A] bg-[#111827] p-6 hover:border-[#3F3F46] transition-all duration-200 flex flex-col"
+              className="rounded-xl bg-white/[0.02] border border-white/[0.05] p-5 hover:bg-white/[0.035] hover:border-white/[0.08] transition-all duration-200 flex flex-col"
             >
-              {/* Stars */}
-              <div className="flex gap-0.5 mb-4 text-amber-400 text-xs">
-                {"★★★★★"}
-              </div>
-
-              <p className="text-[13px] text-[#D4D4D8] leading-relaxed flex-1 mb-6">
+              {/* Quote */}
+              <p className="text-[12px] text-white/50 leading-relaxed flex-1 mb-5">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              <div className="flex items-center gap-3 pt-4 border-t border-[#1F2937]">
+              {/* Author */}
+              <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.04]">
                 <div
-                  className={`h-9 w-9 rounded-full ${t.bgColor} border ${t.borderColor} flex items-center justify-center font-bold text-[10px] text-white`}
+                  className={`h-8 w-8 rounded-full ${t.avatarBg} flex items-center justify-center font-bold text-[10px]`}
                 >
-                  {t.initials}
+                  {t.avatar}
                 </div>
                 <div>
-                  <p className="text-[12px] font-semibold text-white">
+                  <p className="text-[11px] font-semibold text-white/75">
                     {t.name}
                   </p>
-                  <p className="text-[10px] text-[#71717A]">
+                  <p className="text-[10px] text-white/25">
                     {t.role} · {t.company}
                   </p>
                 </div>

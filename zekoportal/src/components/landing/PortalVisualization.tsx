@@ -1,55 +1,151 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
-  Send,
-  Layers,
-  LayoutDashboard,
+  FolderKanban,
+  MessageSquare,
   CheckCircle2,
-  Truck,
+  BarChart3,
+  Users,
+  ArrowRight,
 } from "lucide-react";
 
-const steps = [
+const tabs = [
   {
-    icon: Send,
-    label: "Client Request",
-    description: "Submit briefs & assets",
-    color: "text-sky-400",
-    bg: "bg-sky-500/10",
-    border: "border-sky-500/30",
+    id: "projects",
+    label: "Projects",
+    icon: FolderKanban,
+    content: {
+      title: "Organize everything in one workspace",
+      description:
+        "Create projects, assign tasks, and track milestones. Every team member sees exactly what's happening.",
+      mockup: (
+        <div className="space-y-2">
+          {[
+            { name: "Brand Redesign", team: "Design", tasks: "12/18", color: "bg-blue-400" },
+            { name: "API Integration", team: "Engineering", tasks: "8/10", color: "bg-emerald-400" },
+            { name: "Launch Campaign", team: "Marketing", tasks: "5/14", color: "bg-violet-400" },
+          ].map((p) => (
+            <div key={p.name} className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+              <div className={`h-2 w-2 rounded-full ${p.color} shrink-0`} />
+              <div className="flex-1 min-w-0">
+                <span className="text-[11px] font-medium text-white/80 block truncate">{p.name}</span>
+                <span className="text-[9px] text-white/30">{p.team}</span>
+              </div>
+              <span className="text-[10px] text-white/30 font-medium">{p.tasks} tasks</span>
+            </div>
+          ))}
+        </div>
+      ),
+    },
   },
   {
-    icon: Layers,
-    label: "Portal Core",
-    description: "Centralise & organise",
-    color: "text-primary",
-    bg: "bg-primary/10",
-    border: "border-primary/30",
-    highlight: true,
+    id: "chat",
+    label: "Chat",
+    icon: MessageSquare,
+    content: {
+      title: "Keep conversations next to the work",
+      description:
+        "Threaded messaging per project. Tag teammates, share files, and never lose context again.",
+      mockup: (
+        <div className="space-y-2.5">
+          <div className="flex items-start gap-2">
+            <div className="h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center text-[8px] font-bold text-blue-300 shrink-0">S</div>
+            <div className="space-y-0.5">
+              <div className="flex items-baseline gap-2">
+                <span className="text-[10px] font-semibold text-white/60">Sarah</span>
+                <span className="text-[8px] text-white/20">2 min ago</span>
+              </div>
+              <div className="bg-white/[0.03] rounded-lg rounded-tl-sm px-3 py-1.5 border border-white/[0.04] text-[10px] text-white/50 max-w-[85%]">
+                Just uploaded the new wireframes for the dashboard. Check the files tab! 📎
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <div className="h-6 w-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-[8px] font-bold text-emerald-300 shrink-0">J</div>
+            <div className="space-y-0.5">
+              <div className="flex items-baseline gap-2">
+                <span className="text-[10px] font-semibold text-white/60">James</span>
+                <span className="text-[8px] text-white/20">1 min ago</span>
+              </div>
+              <div className="bg-white/[0.03] rounded-lg rounded-tl-sm px-3 py-1.5 border border-white/[0.04] text-[10px] text-white/50 max-w-[85%]">
+                Looks great! Moving to review ✅
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+            <span className="text-[10px] text-white/20 flex-1">Type a message...</span>
+            <ArrowRight className="h-3 w-3 text-white/15" />
+          </div>
+        </div>
+      ),
+    },
   },
   {
-    icon: LayoutDashboard,
-    label: "Team Dashboard",
-    description: "Assign & track work",
-    color: "text-cyan-400",
-    bg: "bg-cyan-500/10",
-    border: "border-cyan-500/30",
-  },
-  {
+    id: "approvals",
+    label: "Approvals",
     icon: CheckCircle2,
-    label: "Approval",
-    description: "Review & approve",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10",
-    border: "border-emerald-500/30",
+    content: {
+      title: "Get sign-off without the back-and-forth",
+      description:
+        "Built-in approval workflows. Clients review, approve, or request changes — all tracked in one place.",
+      mockup: (
+        <div className="space-y-2">
+          {[
+            { item: "Homepage Design v3", status: "Approved", icon: "✅", bg: "bg-emerald-500/8 border-emerald-500/15" },
+            { item: "Logo Concepts", status: "Pending Review", icon: "⏳", bg: "bg-amber-500/8 border-amber-500/15" },
+            { item: "Mobile Wireframes", status: "Changes Requested", icon: "🔄", bg: "bg-blue-500/8 border-blue-500/15" },
+          ].map((a) => (
+            <div key={a.item} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg border ${a.bg}`}>
+              <span className="text-sm shrink-0">{a.icon}</span>
+              <div className="flex-1 min-w-0">
+                <span className="text-[11px] font-medium text-white/70 block truncate">{a.item}</span>
+                <span className="text-[9px] text-white/30">{a.status}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
   },
   {
-    icon: Truck,
-    label: "Delivery",
-    description: "Ship & archive",
-    color: "text-amber-400",
-    bg: "bg-amber-500/10",
-    border: "border-amber-500/30",
+    id: "analytics",
+    label: "Insights",
+    icon: BarChart3,
+    content: {
+      title: "See how your team is performing",
+      description:
+        "Track project velocity, team workload, and delivery timelines. Data-driven decisions, no guesswork.",
+      mockup: (
+        <div className="space-y-3">
+          <div className="grid grid-cols-3 gap-2">
+            {[
+              { label: "Delivered", val: "142", color: "text-emerald-400" },
+              { label: "In Progress", val: "23", color: "text-blue-400" },
+              { label: "Overdue", val: "2", color: "text-red-400" },
+            ].map((m) => (
+              <div key={m.label} className="text-center px-2 py-2 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+                <div className={`text-lg font-bold ${m.color}`}>{m.val}</div>
+                <div className="text-[8px] text-white/25 font-medium mt-0.5">{m.label}</div>
+              </div>
+            ))}
+          </div>
+          {/* Mini bar chart */}
+          <div className="flex items-end gap-1.5 h-16 px-2">
+            {[40, 65, 55, 80, 70, 90, 75, 85, 60, 95, 80, 70].map((h, i) => (
+              <div
+                key={i}
+                className="flex-1 rounded-sm bg-blue-500/20 hover:bg-blue-500/35 transition-colors"
+                style={{ height: `${h}%` }}
+              />
+            ))}
+          </div>
+          <div className="flex justify-between text-[8px] text-white/15 px-2">
+            <span>Jan</span><span>Jun</span><span>Dec</span>
+          </div>
+        </div>
+      ),
+    },
   },
 ];
 
@@ -59,12 +155,8 @@ function useReveal() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add("visible");
-        }
-      },
-      { threshold: 0.15 }
+      ([entry]) => { if (entry.isIntersecting) el.classList.add("visible"); },
+      { threshold: 0.1 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -73,125 +165,71 @@ function useReveal() {
 }
 
 export default function PortalVisualization() {
+  const [activeTab, setActiveTab] = useState("projects");
   const revealRef = useReveal();
+  const active = tabs.find((t) => t.id === activeTab)!;
 
   return (
-    <section id="demo" className="py-24 md:py-32 relative overflow-hidden">
-      <div className="glow-orb w-[500px] h-[500px] bg-primary/5 top-[20%] left-[-10%] absolute" />
-
-      <div ref={revealRef} className="reveal max-w-6xl mx-auto px-5 md:px-8">
+    <section id="demo" className="py-20 md:py-28 relative overflow-hidden">
+      <div ref={revealRef} className="reveal max-w-5xl mx-auto px-5 md:px-8">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-20">
-          <p className="text-[11px] font-semibold text-primary uppercase tracking-widest mb-3">
+        <div className="text-center mb-12">
+          <p className="text-[11px] font-semibold text-blue-400/70 uppercase tracking-widest mb-3">
             How it works
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
-            One portal, every workflow
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3">
+            Everything your team needs,
+            <br className="hidden md:block" />
+            <span className="text-white/40"> in one workspace</span>
           </h2>
-          <p className="text-[#A1A1AA] text-base md:text-lg max-w-xl mx-auto">
-            From request to delivery — your entire client workflow flows through
-            a single connected system.
-          </p>
         </div>
 
-        {/* Desktop: horizontal flow */}
-        <div className="hidden md:flex items-center justify-between relative">
-          {/* Connecting line */}
-          <div className="absolute top-1/2 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-[#27272A] to-transparent -translate-y-1/2 z-0" />
-
-          {/* Flowing dots */}
-          <div className="absolute top-1/2 left-[10%] right-[10%] h-px -translate-y-1/2 z-[1] overflow-hidden">
-            <div
-              className="absolute h-1 w-6 rounded-full bg-primary/60"
-              style={{
-                animation: "flowHorizontal 4s linear infinite",
-              }}
-            />
-            <div
-              className="absolute h-1 w-6 rounded-full bg-cyan-400/40"
-              style={{
-                animation: "flowHorizontal 4s linear infinite 2s",
-              }}
-            />
+        {/* Interactive workspace demo */}
+        <div className="workspace-frame shadow-soft-lg max-w-3xl mx-auto">
+          {/* Title bar */}
+          <div className="workspace-frame-titlebar">
+            <div className="workspace-frame-dot bg-[#FF5F57]" />
+            <div className="workspace-frame-dot bg-[#FFBD2E]" />
+            <div className="workspace-frame-dot bg-[#28C840]" />
           </div>
 
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <div
-                key={step.label}
-                className="relative z-10 flex flex-col items-center text-center w-[18%]"
-                style={{ animationDelay: `${i * 150}ms` }}
-              >
-                <div
-                  className={`h-16 w-16 rounded-2xl border ${step.border} ${step.bg} flex items-center justify-center mb-4 transition-all duration-300 hover:scale-110 ${
-                    step.highlight ? "animate-pulse-node" : ""
+          {/* Tab bar */}
+          <div className="flex border-b border-white/[0.06] px-4 gap-0">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-1.5 px-3 py-2.5 text-[11px] font-medium transition-all cursor-pointer relative ${
+                    activeTab === tab.id
+                      ? "text-white/90 tab-active"
+                      : "text-white/30 hover:text-white/50"
                   }`}
                 >
-                  <Icon className={`h-7 w-7 ${step.color}`} />
-                </div>
-                <h3 className="text-sm font-semibold text-white mb-1">
-                  {step.label}
+                  <Icon className="h-3 w-3" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Content */}
+          <div className="p-5 sm:p-6 min-h-[280px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+              <div className="space-y-3">
+                <h3 className="text-[15px] font-semibold text-white/90">
+                  {active.content.title}
                 </h3>
-                <p className="text-[11px] text-[#71717A] leading-relaxed">
-                  {step.description}
+                <p className="text-[12px] text-white/40 leading-relaxed">
+                  {active.content.description}
                 </p>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Mobile: vertical flow */}
-        <div className="flex flex-col md:hidden items-center gap-0">
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <React.Fragment key={step.label}>
-                <div className="flex items-center gap-4 w-full max-w-xs">
-                  <div
-                    className={`h-12 w-12 shrink-0 rounded-xl border ${step.border} ${step.bg} flex items-center justify-center transition-all ${
-                      step.highlight ? "animate-pulse-node" : ""
-                    }`}
-                  >
-                    <Icon className={`h-5 w-5 ${step.color}`} />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-white">
-                      {step.label}
-                    </h3>
-                    <p className="text-[11px] text-[#71717A]">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-                {i < steps.length - 1 && (
-                  <div className="w-px h-8 bg-[#27272A] ml-6 relative overflow-hidden">
-                    <div
-                      className="absolute w-px h-3 bg-primary/50 left-0"
-                      style={{
-                        animation: "flowVertical 2s linear infinite",
-                        animationDelay: `${i * 0.4}s`,
-                      }}
-                    />
-                  </div>
-                )}
-              </React.Fragment>
-            );
-          })}
+              <div>{active.content.mockup}</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Inline keyframes for flow animations */}
-      <style jsx>{`
-        @keyframes flowHorizontal {
-          0% { left: -5%; }
-          100% { left: 105%; }
-        }
-        @keyframes flowVertical {
-          0% { top: -20%; }
-          100% { top: 120%; }
-        }
-      `}</style>
     </section>
   );
 }
