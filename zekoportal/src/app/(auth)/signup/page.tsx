@@ -100,7 +100,7 @@ export default function SignupPage() {
                 </div>
               )}
               {isSuccess && (
-                <div className="flex items-center gap-2 p-3 text-sm font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-md">
+                <div className="flex items-center gap-2 p-3 text-sm font-medium text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-md">
                   <Check className="h-4 w-4 shrink-0" />
                   <span>Account created successfully. Redirecting...</span>
                 </div>

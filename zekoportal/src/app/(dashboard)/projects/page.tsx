@@ -47,13 +47,13 @@ export default function ProjectsPage() {
   const getStatusDetails = (status: string) => {
     switch(status) {
       case "active":
-        return { label: "Active", dotClass: "status-active", textClass: "text-emerald-400", bgClass: "bg-emerald-500/10 border-emerald-500/20" };
+        return { label: "Active", dotClass: "status-active", textClass: "text-blue-400", bgClass: "bg-blue-500/10 border-blue-500/20" };
       case "in_review":
-        return { label: "In Review", dotClass: "status-review", textClass: "text-amber-400", bgClass: "bg-amber-500/10 border-amber-500/20" };
+        return { label: "In Review", dotClass: "status-review", textClass: "text-orange-400", bgClass: "bg-orange-500/10 border-orange-500/20" };
       case "on_hold":
         return { label: "On Hold", dotClass: "status-hold", textClass: "text-zinc-400", bgClass: "bg-zinc-500/10 border-zinc-500/20" };
       case "completed":
-        return { label: "Completed", dotClass: "status-complete", textClass: "text-emerald-400", bgClass: "bg-emerald-500/10 border-emerald-500/20" };
+        return { label: "Completed", dotClass: "status-complete", textClass: "text-blue-400", bgClass: "bg-blue-500/10 border-blue-500/20" };
       default:
         return { label: status, dotClass: "bg-zinc-500", textClass: "text-zinc-400", bgClass: "bg-zinc-500/10 border-zinc-500/20" };
     }

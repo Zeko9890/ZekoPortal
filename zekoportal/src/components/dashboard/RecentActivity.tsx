@@ -22,13 +22,13 @@ export default function RecentActivity() {
   const getIconDetails = (type: string) => {
     switch (type) {
       case "document":
-        return { icon: FileText, color: "text-emerald-400", bg: "bg-emerald-500/10" };
+        return { icon: FileText, color: "text-blue-400", bg: "bg-blue-500/10" };
       case "message":
         return { icon: MessageSquare, color: "text-sky-400", bg: "bg-sky-500/10" };
       case "milestone":
         return { icon: Trophy, color: "text-sky-400", bg: "bg-sky-500/10" };
       case "status":
-        return { icon: ToggleLeft, color: "text-amber-400", bg: "bg-amber-500/10" };
+        return { icon: ToggleLeft, color: "text-orange-400", bg: "bg-orange-500/10" };
       default:
         return { icon: CircleDot, color: "text-[#71717A]", bg: "bg-[#1F2937]" };
     }
@@ -41,7 +41,7 @@ export default function RecentActivity() {
           Activity Feed
         </h3>
         <span className="flex items-center gap-1.5 text-[10px] text-[#A1A1AA] font-medium px-2 py-1 rounded-md bg-[#09090B] border border-[#27272A]">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
           Live
         </span>
       </div>

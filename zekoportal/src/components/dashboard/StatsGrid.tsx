@@ -40,8 +40,8 @@ export default function StatsGrid() {
       value: reviewCount,
       description: "Awaiting feedback",
       icon: Clock,
-      iconColor: "text-amber-400",
-      accentColor: "bg-amber-400",
+      iconColor: "text-orange-400",
+      accentColor: "bg-orange-400",
       link: "/projects?status=in_review",
     },
     {
@@ -49,8 +49,8 @@ export default function StatsGrid() {
       value: completedCount,
       description: "Delivered & archived",
       icon: CheckCircle2,
-      iconColor: "text-emerald-400",
-      accentColor: "bg-emerald-400",
+      iconColor: "text-blue-400",
+      accentColor: "bg-blue-400",
       link: "/projects?status=completed",
     },
     {

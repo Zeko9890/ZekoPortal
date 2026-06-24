@@ -163,7 +163,7 @@ export default function MessagesPage() {
                       className="h-9 w-9 rounded-full object-cover border border-border/80"
                     />
                     {conv.participant.status === "online" && (
-                      <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-[hsl(240_10%_5%)]" />
+                      <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-blue-500 ring-2 ring-[hsl(240_10%_5%)]" />
                     )}
                   </div>
 
@@ -227,7 +227,7 @@ export default function MessagesPage() {
                 className="h-9 w-9 rounded-full object-cover border border-border/80"
               />
               {activeConversation.participant.status === "online" && (
-                <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-[hsl(240_10%_5%)]" />
+                <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-blue-500 ring-2 ring-[hsl(240_10%_5%)]" />
               )}
             </div>
 

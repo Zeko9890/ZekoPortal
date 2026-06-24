@@ -1,26 +1,31 @@
 "use client";
 
 import Navbar from "@/components/landing/Navbar";
-import HeroSection from "@/components/landing/HeroSection";
-import PortalVisualization from "@/components/landing/PortalVisualization";
-import BentoGrid from "@/components/landing/BentoGrid";
-import StatsBar from "@/components/landing/StatsBar";
-import Testimonials from "@/components/landing/Testimonials";
+import SplitHero from "@/components/landing/SplitHero";
+import WorkspaceOverview from "@/components/landing/WorkspaceOverview";
+import WorkflowAutomation from "@/components/landing/WorkflowAutomation";
+import TeamCollaboration from "@/components/landing/TeamCollaboration";
+import ClientPortal from "@/components/landing/ClientPortal";
 import PricingSection from "@/components/landing/PricingSection";
-import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#09090B] text-white overflow-x-hidden">
       <Navbar />
-      <HeroSection />
-      <PortalVisualization />
-      <BentoGrid />
-      <StatsBar />
-      <Testimonials />
+      {/* Section 1 — Split-screen hero with product preview */}
+      <SplitHero />
+      {/* Section 2 — Workspace overview: Tasks / Projects / Clients / Approvals / Files */}
+      <WorkspaceOverview />
+      {/* Section 3 — Workflow automation builder */}
+      <WorkflowAutomation />
+      {/* Section 4 — Team collaboration: comments, mentions, approvals */}
+      <TeamCollaboration />
+      {/* Section 5 — Client portal experience */}
+      <ClientPortal />
+      {/* Section 6 — Pricing */}
       <PricingSection />
-      <CTASection />
+      {/* Section 7 — Resources footer */}
       <Footer />
     </div>
   );

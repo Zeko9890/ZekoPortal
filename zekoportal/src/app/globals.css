@@ -4,6 +4,46 @@
 
 :root {
   /* ── Surfaces ─────────────────────────────── */
+  --background: 0 0% 100%;        /* Pure White */
+  --foreground: 240 5% 15%;       /* Dark Charcoal */
+
+  --card: 0 0% 100%;
+  --card-foreground: 240 5% 15%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 5% 15%;
+
+  /* ── Brand: Primary White & Soft Blues ─────────────── */
+  --primary: 240 5.9% 10%;        /* Near Black for buttons */
+  --primary-foreground: 0 0% 98%;
+
+  /* ── Supporting tones ────────────────────── */
+  --secondary: 210 40% 96%;       /* Light/Ice blue */
+  --secondary-foreground: 210 40% 20%;
+
+  --muted: 240 5% 96%;            /* Light gray */
+  --muted-foreground: 240 5% 45%;
+
+  --accent: 24.6 95% 53.1%;       /* #F97316 Orange */
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  /* ── Chrome ───────────────────────────────── */
+  --border: 240 5% 90%;           /* Subtle gray border */
+  --input: 240 5% 90%;
+  --ring: 199 89% 60%;
+  
+  --radius: 0.375rem;
+
+  /* Sidebar width tokens */
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 68px;
+}
+
+.dark {
+  /* ── Surfaces ─────────────────────────────── */
   --background: 240 10% 4%;       /* #09090B */
   --foreground: 0 0% 98%;         /* #FAFAFA */
 
@@ -13,19 +53,19 @@
   --popover: 221 39% 11%;
   --popover-foreground: 0 0% 98%;
 
-  /* ── Brand: Light Blue accent ─────────────── */
-  --primary: 199 89% 60%;         /* #38BDF8 */
-  --primary-foreground: 0 0% 100%;
+  /* ── Brand: Primary White & Soft Blues ─────────────── */
+  --primary: 0 0% 98%;            /* White */
+  --primary-foreground: 240 5.9% 10%;
 
   /* ── Supporting tones ────────────────────── */
-  --secondary: 240 5% 16%;
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 214 32% 12%;       /* Soft dark blue */
+  --secondary-foreground: 210 40% 98%;
 
   --muted: 240 5% 16%;
   --muted-foreground: 240 5% 65%; /* #A1A1AA */
 
-  --accent: 199 89% 48%;          /* #0EA5E9 */
-  --accent-foreground: 0 0% 98%;
+  --accent: 24.6 95% 53.1%;       /* #F97316 Orange */
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;       /* #EF4444 */
   --destructive-foreground: 0 0% 98%;
@@ -97,6 +137,10 @@
 /* ============================================
    BASE RESETS
    ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   border-color: hsl(var(--border));
   box-sizing: border-box;
@@ -191,13 +235,13 @@ body {
   background: hsl(199 89% 60%); /* sky-400 */
 }
 .status-review {
-  background: hsl(38 92% 50%); /* amber-500 */
+  background: hsl(24.6 95% 53.1%); /* orange-500 */
 }
 .status-hold {
   background: hsl(240 5% 42%);
 }
 .status-complete {
-  background: hsl(142 71% 45%); /* green-500 */
+  background: hsl(210 40% 98%); /* ice blue/white */
 }
 
 /* ============================================
@@ -219,9 +263,9 @@ body {
 .skeleton {
   background: linear-gradient(
     90deg,
-    hsl(240 5% 10%) 0%,
-    hsl(240 5% 15%) 50%,
-    hsl(240 5% 10%) 100%
+    hsl(var(--muted)) 0%,
+    hsl(var(--secondary)) 50%,
+    hsl(var(--muted)) 100%
   );
   background-size: 200% 100%;
   animation: shimmer 1.8s ease-in-out infinite;
@@ -255,10 +299,10 @@ body {
   background: hsl(199 89% 60%);
 }
 .progress-review {
-  background: hsl(38 92% 55%);
+  background: hsl(24.6 95% 53.1%);
 }
 .progress-complete {
-  background: hsl(142 71% 42%);
+  background: hsl(210 40% 98%);
 }
 .progress-hold {
   background: hsl(240 5% 30%);
@@ -286,17 +330,29 @@ body {
    LANDING PAGE — Premium Density Utilities
    ============================================ */
 .glass-panel {
-  background: rgba(10, 10, 10, 0.4);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass-panel {
+  background: rgba(10, 10, 10, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .border-crisp {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.dark .border-crisp {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .shadow-premium {
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.05),
+              0 12px 32px -8px rgba(0, 0, 0, 0.08);
+}
+.dark .shadow-premium {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
               0 8px 32px -4px rgba(0, 0, 0, 0.5),
               0 24px 64px -8px rgba(0, 0, 0, 0.6);
@@ -312,6 +368,12 @@ body {
 
 /* Premium Gradient Text */
 .text-gradient-premium {
+  background: linear-gradient(180deg, #111827 0%, rgba(17, 24, 39, 0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dark .text-gradient-premium {
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -319,7 +381,7 @@ body {
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+  background: linear-gradient(135deg, #38BDF8 0%, #E0F2FE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -363,10 +425,15 @@ body {
 
 /* Grid Background - Dense */
 .bg-grid-dense {
-  background-size: 24px 24px;
+  background-size: 32px 32px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+.dark .bg-grid-dense {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
 /* ============================================
@@ -383,3 +450,83 @@ body {
   transform: translateY(0);
 }
 
+/* ============================================
+   HOMEPAGE REDESIGN — New Section Utilities
+   ============================================ */
+
+/* Split hero left/right grid */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Workspace tab active underline */
+.workspace-tab-active {
+  position: relative;
+}
+.workspace-tab-active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+/* Node graph connector lines */
+.node-connector {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+/* Client portal branded gradient header */
+.client-portal-header {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(56, 189, 248, 0.06) 100%);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+/* Hover row highlight for dashboard tables */
+.dashboard-row:hover {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+/* Accent glow for featured pricing card */
+.pricing-featured-glow {
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.2),
+    0 24px 48px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(56, 189, 248, 0.05);
+}
+
+/* Approval flow connector */
+.approval-connector {
+  flex: 1;
+  height: 1px;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+
+/* Typing indicator dots */
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
+}
+
+
+/* ============================================
+   BUTTON MICRO-INTERACTIONS
+   ============================================ */
+.btn-interactive {
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+.btn-interactive:hover {
+  transform: translateY(-1px);
+}
+.btn-interactive:active {
+  transform: translateY(0px) scale(0.985);
+}

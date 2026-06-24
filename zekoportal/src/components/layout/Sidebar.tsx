@@ -35,8 +35,8 @@ const menuItems: NavItem[] = [
 
 const recentProjects = [
   { name: "Skynet Redesign", id: "proj-1", color: "bg-sky-400" },
-  { name: "AI Engine API", id: "proj-2", color: "bg-emerald-400" },
-  { name: "Mobile App", id: "proj-3", color: "bg-amber-400" },
+  { name: "AI Engine API", id: "proj-2", color: "bg-blue-400" },
+  { name: "Mobile App", id: "proj-3", color: "bg-orange-400" },
 ];
 
 export default function Sidebar() {

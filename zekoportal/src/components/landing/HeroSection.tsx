@@ -61,9 +61,9 @@ export default function HeroSection() {
           {/* Mockup Container */}
           <div className="mockup-container relative z-10 w-full aspect-[16/9] md:aspect-[21/9] flex flex-col">
             <div className="mockup-header">
-              <div className="mockup-dot bg-[#FF5F57]" />
-              <div className="mockup-dot bg-[#FFBD2E]" />
-              <div className="mockup-dot bg-[#28C840]" />
+              <div className="mockup-dot bg-white/20" />
+              <div className="mockup-dot bg-white/20" />
+              <div className="mockup-dot bg-white/20" />
               <div className="mx-auto text-[10px] text-white/30 font-medium font-mono">zekoportal.com/workspace</div>
             </div>
             
@@ -85,8 +85,8 @@ export default function HeroSection() {
                   <div className="h-6 w-32 bg-white/10 rounded-[4px]" />
                   <div className="flex -space-x-2">
                     <div className="h-6 w-6 rounded-full border border-black bg-blue-500" />
-                    <div className="h-6 w-6 rounded-full border border-black bg-emerald-500" />
-                    <div className="h-6 w-6 rounded-full border border-black bg-violet-500" />
+                    <div className="h-6 w-6 rounded-full border border-black bg-orange-500" />
+                    <div className="h-6 w-6 rounded-full border border-black bg-slate-400" />
                   </div>
                 </div>
 
@@ -111,8 +111,8 @@ export default function HeroSection() {
           {/* Floating Collaboration Cursor */}
           <div className="absolute top-[30%] left-[25%] z-30 animate-float-up" style={{ animationDelay: '0.4s' }}>
             <div className="relative">
-              <MousePointer2 className="h-4 w-4 text-emerald-400 fill-emerald-400 -rotate-12" />
-              <div className="absolute top-4 left-4 bg-emerald-500 text-black text-[9px] font-bold px-1.5 py-0.5 rounded-[3px] shadow-lg whitespace-nowrap">
+              <MousePointer2 className="h-4 w-4 text-orange-500 fill-orange-500 -rotate-12" />
+              <div className="absolute top-4 left-4 bg-orange-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-[3px] shadow-lg whitespace-nowrap">
                 Sarah is editing
               </div>
             </div>
@@ -120,8 +120,8 @@ export default function HeroSection() {
 
           {/* Floating Notification */}
           <div className="absolute top-[15%] right-[-2%] md:right-[-5%] z-30 animate-float-up glass-panel p-3 rounded-[8px] flex items-center gap-3 w-[220px]" style={{ animationDelay: '0.6s' }}>
-            <div className="h-8 w-8 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
-              <BellRing className="h-3.5 w-3.5 text-blue-400" />
+            <div className="h-8 w-8 rounded-full bg-orange-500/20 flex items-center justify-center shrink-0">
+              <BellRing className="h-3.5 w-3.5 text-orange-500" />
             </div>
             <div>
               <div className="text-[10px] font-bold text-white/90">Client Approval</div>

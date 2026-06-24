@@ -31,7 +31,7 @@ export default function WelcomeCard() {
           <div className="space-y-3 max-w-2xl">
             {/* Status pill */}
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-[#27272A] bg-[#09090B] text-[10px] font-semibold text-[#A1A1AA] uppercase tracking-wider">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
               Client Portal
             </div>
 
@@ -54,7 +54,7 @@ export default function WelcomeCard() {
                   {reviewCount > 0 && (
                     <>
                       {" "}and{" "}
-                      <span className="font-medium text-amber-400">
+                      <span className="font-medium text-orange-500">
                         {reviewCount} awaiting review
                       </span>
                     </>
@@ -75,11 +75,11 @@ export default function WelcomeCard() {
                 {activeCount} Active
               </div>
               <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#27272A] bg-[#09090B] text-xs font-medium text-[#A1A1AA]">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
                 {reviewCount} In Review
               </div>
               <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#27272A] bg-[#09090B] text-xs font-medium text-[#A1A1AA]">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="h-1.5 w-1.5 rounded-full bg-white" />
                 {totalProgress}% Overall
               </div>
             </div>

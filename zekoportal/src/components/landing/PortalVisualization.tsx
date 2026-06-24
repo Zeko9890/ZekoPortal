@@ -65,11 +65,11 @@ export default function PortalVisualization() {
             
             <div className="flex-1 space-y-2 overflow-hidden">
               {[
-                { task: "Finalize branding guidelines", status: "Done", sColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20", priority: "High" },
+                { task: "Finalize branding guidelines", status: "Done", sColor: "text-white/80 bg-white/10 border-white/20", priority: "High" },
                 { task: "Implement authentication flow", status: "In Progress", sColor: "text-blue-400 bg-blue-500/10 border-blue-500/20", priority: "High" },
-                { task: "Design system audit", status: "Review", sColor: "text-amber-400 bg-amber-500/10 border-amber-500/20", priority: "Medium" },
+                { task: "Design system audit", status: "Review", sColor: "text-orange-400 bg-orange-500/10 border-orange-500/20", priority: "Medium" },
                 { task: "Copywriting for landing page", status: "Todo", sColor: "text-white/40 bg-white/5 border-white/10", priority: "Low" },
-                { task: "Client kick-off meeting", status: "Done", sColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20", priority: "High" },
+                { task: "Client kick-off meeting", status: "Done", sColor: "text-white/80 bg-white/10 border-white/20", priority: "High" },
               ].map((t, i) => (
                 <div key={i} className="flex items-center justify-between p-2.5 rounded-[6px] border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group">
                   <div className="flex items-center gap-3">
@@ -93,7 +93,7 @@ export default function PortalVisualization() {
             {/* Approvals Widget */}
             <div className="flex-1 glass-panel rounded-xl p-5 border-crisp flex flex-col justify-center">
               <div className="flex items-center gap-2 mb-4">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                <CheckCircle2 className="h-4 w-4 text-orange-500" />
                 <span className="text-[12px] font-semibold text-white/90">Client Sign-off</span>
               </div>
               <div className="bg-[#0A0A0A] border border-white/10 rounded-[8px] p-3">
@@ -102,10 +102,10 @@ export default function PortalVisualization() {
                     <div className="text-[11px] font-bold text-white mb-0.5">Homepage v4.fig</div>
                     <div className="text-[9px] text-white/40">Awaiting approval from Sarah</div>
                   </div>
-                  <div className="h-6 w-6 rounded-full bg-violet-500/20 text-[8px] font-bold text-violet-300 flex items-center justify-center">SC</div>
+                  <div className="h-6 w-6 rounded-full bg-orange-500/20 text-[8px] font-bold text-orange-300 flex items-center justify-center">SC</div>
                 </div>
                 <div className="flex gap-2">
-                  <button className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-black text-[10px] font-bold py-1.5 rounded-[4px] transition-colors">Approve</button>
+                  <button className="flex-1 bg-white hover:bg-white/90 text-black text-[10px] font-bold py-1.5 rounded-[4px] transition-colors">Approve</button>
                   <button className="flex-1 bg-white/5 hover:bg-white/10 text-white/70 text-[10px] font-bold py-1.5 rounded-[4px] transition-colors">Request Changes</button>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function PortalVisualization() {
             {/* Quick Chat Widget */}
             <div className="flex-1 glass-panel rounded-xl p-5 border-crisp flex flex-col justify-end relative overflow-hidden">
               <div className="absolute top-5 left-5 flex items-center gap-2">
-                <MessageSquare className="h-4 w-4 text-violet-400" />
+                <MessageSquare className="h-4 w-4 text-blue-400" />
                 <span className="text-[12px] font-semibold text-white/90">Instant Context</span>
               </div>
               

@@ -128,8 +128,8 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
         </div>
 
         {/* Live badge */}
-        <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-[10px] font-medium text-emerald-400 tracking-wide">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-blue-500/20 bg-blue-500/5 text-[10px] font-medium text-blue-400 tracking-wide">
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
           Live
         </div>
       </div>

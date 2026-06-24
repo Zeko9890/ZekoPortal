@@ -62,7 +62,7 @@ export default function SettingsPage() {
 
       {/* Success alert banner */}
       {isSaved && (
-        <div className="flex items-center gap-2.5 p-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5 text-xs text-emerald-400 animate-in fade-in duration-200">
+        <div className="flex items-center gap-2.5 p-3 rounded-lg border border-blue-500/20 bg-blue-500/5 text-xs text-blue-400 animate-in fade-in duration-200">
           <Check className="h-4 w-4 shrink-0" />
           <span className="font-semibold">Settings successfully updated.</span> Changes are synchronized across your team portal.
         </div>

@@ -95,7 +95,7 @@ export default function MascotHero() {
         <motion.div 
           animate={{ y: [15, -15, 15], opacity: [0.2, 0.5, 0.2] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/3 right-1/4 h-3 w-3 rounded-full bg-violet-400/40 blur-[2px]" 
+          className="absolute bottom-1/3 right-1/4 h-3 w-3 rounded-full bg-slate-400/40 blur-[2px]" 
         />
         
         {/* THE PROJECT CARD */}
@@ -117,7 +117,7 @@ export default function MascotHero() {
             </div>
             <div className="flex flex-col items-end">
               <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-tight">Progress</span>
-              <motion.span className="text-xs font-bold text-emerald-400 leading-tight">
+              <motion.span className="text-xs font-bold text-blue-400 leading-tight">
                 {displayProgress}%
               </motion.span>
             </div>
@@ -125,21 +125,21 @@ export default function MascotHero() {
           
           <div className="h-1.5 w-full bg-zinc-800/80 rounded-full overflow-hidden mb-5">
             <motion.div 
-              className="h-full bg-gradient-to-r from-primary to-violet-400 rounded-full" 
+              className="h-full bg-gradient-to-r from-primary to-slate-400 rounded-full" 
               style={{ width: useTransform(progressValue, v => `${v}%`) }}
             />
           </div>
           
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2.5">
-              <div className="h-4 w-4 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                 <CheckCircle2 className="h-2.5 w-2.5 text-emerald-400" />
+              <div className="h-4 w-4 rounded-full bg-blue-500/20 flex items-center justify-center">
+                 <CheckCircle2 className="h-2.5 w-2.5 text-blue-400" />
               </div>
               <span className="text-[11px] text-zinc-300 font-medium">Design System</span>
             </div>
             <div className="flex items-center gap-2.5">
-              <div className="h-4 w-4 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                 <CheckCircle2 className="h-2.5 w-2.5 text-emerald-400" />
+              <div className="h-4 w-4 rounded-full bg-blue-500/20 flex items-center justify-center">
+                 <CheckCircle2 className="h-2.5 w-2.5 text-blue-400" />
               </div>
               <span className="text-[11px] text-zinc-300 font-medium">Authentication</span>
             </div>
@@ -153,7 +153,7 @@ export default function MascotHero() {
                 className="h-4 w-4 rounded-full flex items-center justify-center"
               >
                  {isDone ? (
-                   <CheckCircle2 className="h-2.5 w-2.5 text-emerald-400" />
+                   <CheckCircle2 className="h-2.5 w-2.5 text-blue-400" />
                  ) : (
                    <div className="h-1.5 w-1.5 rounded-full bg-primary" />
                  )}

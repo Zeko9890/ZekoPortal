@@ -18,10 +18,10 @@ export default function UpcomingDeadlines() {
     if (days < 0)
       return { label: "Overdue", color: "text-red-400", bg: "bg-red-500/8 border-red-500/20" };
     if (days <= 3)
-      return { label: "Urgent", color: "text-amber-400", bg: "bg-amber-500/8 border-amber-500/20" };
+      return { label: "Urgent", color: "text-orange-400", bg: "bg-orange-500/8 border-orange-500/20" };
     if (days <= 7)
       return { label: "Upcoming", color: "text-sky-400", bg: "bg-sky-500/8 border-sky-500/20" };
-    return { label: "On Track", color: "text-emerald-400", bg: "bg-emerald-500/8 border-emerald-500/20" };
+    return { label: "On Track", color: "text-blue-400", bg: "bg-blue-500/8 border-blue-500/20" };
   };
 
   return (

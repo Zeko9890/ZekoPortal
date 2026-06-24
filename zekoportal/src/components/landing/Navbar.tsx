@@ -3,12 +3,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
+  { label: "Workspace", href: "#features" },
   { label: "Workflow", href: "#workflow" },
+  { label: "Clients", href: "#clients" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Customers", href: "#testimonials" },
 ];
 
 export default function Navbar() {
@@ -53,7 +54,8 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <Link
               href="/login"
               className="text-[13px] font-medium text-white/50 hover:text-white px-3 py-1.5 transition-colors"
@@ -62,7 +64,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/signup"
-              className="text-[12px] font-medium text-black bg-white hover:bg-white/90 px-3.5 py-1.5 rounded-[4px] transition-all"
+              className="btn-interactive text-[12px] font-medium text-black bg-white hover:bg-white/90 px-3.5 py-1.5 rounded-[4px] transition-all"
             >
               Start Free
             </Link>
@@ -103,7 +105,7 @@ export default function Navbar() {
               <Link
                 href="/signup"
                 onClick={() => setMobileOpen(false)}
-                className="text-[14px] font-medium text-black bg-white px-4 py-2 rounded-[4px] text-center"
+                className="btn-interactive text-[14px] font-medium text-black bg-white hover:bg-white/90 px-4 py-2 rounded-[4px] text-center transition-all"
               >
                 Start Free
               </Link>
