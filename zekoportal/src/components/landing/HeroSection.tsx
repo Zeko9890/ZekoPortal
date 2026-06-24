@@ -9,7 +9,7 @@ export default function HeroSection() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative pt-32 pb-0 overflow-hidden bg-white">
+    <section className="relative pt-32 pb-0 overflow-hidden bg-card">
       {/* Dense Grid Background */}
       <div className="absolute inset-0 bg-grid-dense opacity-60" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/80 to-white pointer-events-none z-10" />
@@ -21,20 +21,20 @@ export default function HeroSection() {
         
         {/* Copy - Highly compressed, high impact */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-gray-200 bg-white mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-border bg-card mb-6 shadow-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse" />
-            <span className="text-[10px] font-medium text-gray-600 tracking-wide uppercase">
+            <span className="text-[10px] font-medium text-muted-foreground tracking-wide uppercase">
               ZekoPortal 2.0 is live
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.05] text-gray-900 mb-5">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.05] text-foreground mb-5">
             The workspace for
             <br />
             <span className="text-gradient-premium">high-velocity teams.</span>
           </h1>
 
-          <p className="text-[15px] md:text-[17px] text-gray-500 leading-relaxed max-w-xl mx-auto mb-8 font-medium">
+          <p className="text-[15px] md:text-[17px] text-muted-foreground leading-relaxed max-w-xl mx-auto mb-8 font-medium">
             Unify your projects, client approvals, and team communication in a single, insanely fast portal.
           </p>
 
@@ -48,7 +48,7 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/login"
-              className="btn-interactive flex items-center gap-2 text-[13px] font-medium text-gray-600 hover:text-gray-900 px-5 py-2.5 rounded-[6px] border border-gray-200 bg-white hover:bg-gray-50 transition-all shadow-sm"
+              className="btn-interactive flex items-center gap-2 text-[13px] font-medium text-muted-foreground hover:text-foreground px-5 py-2.5 rounded-[6px] border border-border bg-card hover:bg-muted/50 transition-all shadow-sm"
             >
               Sign In
             </Link>
@@ -60,22 +60,22 @@ export default function HeroSection() {
           
           {/* Mockup Container */}
           <div className="mockup-container relative z-10 w-full aspect-[16/9] md:aspect-[21/9] flex flex-col">
-            <div className="mockup-header bg-gray-50 border-b border-gray-200">
+            <div className="mockup-header bg-muted/50 border-b border-border">
               <div className="mockup-dot bg-gray-300" />
               <div className="mockup-dot bg-gray-300" />
               <div className="mockup-dot bg-gray-300" />
-              <div className="mx-auto text-[10px] text-gray-400 font-medium font-mono">zekoportal.com/workspace</div>
+              <div className="mx-auto text-[10px] text-muted-foreground font-medium font-mono">zekoportal.com/workspace</div>
             </div>
             
             {/* Mockup Body - High Density Data */}
-            <div className="flex-1 bg-white relative overflow-hidden flex">
+            <div className="flex-1 bg-card relative overflow-hidden flex">
               {/* Sidebar */}
-              <div className="w-[60px] md:w-[200px] border-r border-gray-100 bg-gray-50/50 p-3 hidden sm:block">
+              <div className="w-[60px] md:w-[200px] border-r border-border bg-muted/50/50 p-3 hidden sm:block">
                 <div className="h-6 w-full bg-gray-200 rounded-[4px] mb-6" />
                 <div className="space-y-2">
                   <div className="h-4 w-full bg-gray-200 rounded-[3px]" />
-                  <div className="h-4 w-[80%] bg-gray-100 rounded-[3px]" />
-                  <div className="h-4 w-[90%] bg-gray-100 rounded-[3px]" />
+                  <div className="h-4 w-[80%] bg-muted rounded-[3px]" />
+                  <div className="h-4 w-[90%] bg-muted rounded-[3px]" />
                 </div>
               </div>
               
@@ -93,12 +93,12 @@ export default function HeroSection() {
                 {/* Dense Rows */}
                 <div className="space-y-3">
                   {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="h-12 w-full bg-white border border-gray-200 rounded-[6px] flex items-center px-4 justify-between shadow-sm">
+                    <div key={i} className="h-12 w-full bg-card border border-border rounded-[6px] flex items-center px-4 justify-between shadow-sm">
                       <div className="flex items-center gap-3">
                         <div className="h-3 w-3 rounded-full bg-sky-100 border border-sky-300" />
                         <div className="h-3 w-24 bg-gray-200 rounded-[2px]" />
                       </div>
-                      <div className="h-1.5 w-32 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-1.5 w-32 bg-muted rounded-full overflow-hidden">
                         <div className="h-full bg-sky-500" style={{ width: `${80 - (i * 10)}%` }} />
                       </div>
                     </div>
@@ -119,13 +119,13 @@ export default function HeroSection() {
           </div>
 
           {/* Floating Notification */}
-          <div className="absolute top-[15%] right-[-2%] md:right-[-5%] z-30 animate-float-up glass-panel bg-white/95 border-gray-200 shadow-premium p-3 rounded-[8px] flex items-center gap-3 w-[220px]" style={{ animationDelay: '0.6s' }}>
+          <div className="absolute top-[15%] right-[-2%] md:right-[-5%] z-30 animate-float-up glass-panel bg-card/95 border-border shadow-premium p-3 rounded-[8px] flex items-center gap-3 w-[220px]" style={{ animationDelay: '0.6s' }}>
             <div className="h-8 w-8 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
               <BellRing className="h-3.5 w-3.5 text-orange-500" />
             </div>
             <div>
-              <div className="text-[10px] font-bold text-gray-900">Client Approval</div>
-              <div className="text-[9px] text-gray-500">Landing page v3 approved.</div>
+              <div className="text-[10px] font-bold text-foreground">Client Approval</div>
+              <div className="text-[9px] text-muted-foreground">Landing page v3 approved.</div>
             </div>
           </div>
 

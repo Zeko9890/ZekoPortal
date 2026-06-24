@@ -74,14 +74,14 @@ export default function StatsBar() {
   }, []);
 
   return (
-    <section className="py-12 bg-white border-y border-gray-100 relative shadow-sm z-10">
+    <section className="py-12 bg-card border-y border-border relative shadow-sm z-10">
       <div
         ref={ref}
         className="reveal max-w-5xl mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-8"
       >
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
-            <div className="text-3xl md:text-4xl font-bold tracking-tight mb-1 text-gray-900">
+            <div className="text-3xl md:text-4xl font-bold tracking-tight mb-1 text-foreground">
               <AnimatedNumber
                 target={stat.value}
                 suffix={stat.suffix}
@@ -89,7 +89,7 @@ export default function StatsBar() {
                 active={active}
               />
             </div>
-            <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
               {stat.label}
             </p>
           </div>

@@ -77,10 +77,10 @@ export default function ClientPortal() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
           {/* Left: Team internal view */}
-          <div className="rounded-xl border border-gray-200 bg-white overflow-hidden shadow-sm">
-            <div className="px-4 py-2.5 border-b border-gray-100 flex items-center gap-2 bg-gray-50">
-              <Lock className="h-3 w-3 text-gray-400" />
-              <span className="text-[10px] font-semibold text-gray-500">Internal workspace</span>
+          <div className="rounded-xl border border-border bg-card overflow-hidden shadow-sm">
+            <div className="px-4 py-2.5 border-b border-border flex items-center gap-2 bg-muted/50">
+              <Lock className="h-3 w-3 text-muted-foreground" />
+              <span className="text-[10px] font-semibold text-muted-foreground">Internal workspace</span>
               <div className="ml-auto flex items-center gap-1.5">
                 <div className="h-4 w-4 rounded-full bg-indigo-500 flex items-center justify-center text-[6px] font-bold text-white shadow-sm">SC</div>
                 <div className="h-4 w-4 rounded-full bg-sky-500 flex items-center justify-center text-[6px] font-bold text-white shadow-sm">JP</div>
@@ -90,10 +90,10 @@ export default function ClientPortal() {
 
             <div className="flex" style={{ minHeight: 380 }}>
               {/* Sidebar */}
-              <div className="w-[140px] border-r border-gray-100 bg-white p-3 shrink-0">
+              <div className="w-[140px] border-r border-border bg-card p-3 shrink-0">
                 <div className="flex items-center gap-1.5 mb-4 px-1">
-                  <div className="h-4 w-4 rounded-[3px] bg-gray-900 flex items-center justify-center shadow-sm"><span className="text-white font-bold text-[7px]">Z</span></div>
-                  <span className="text-[10px] font-semibold text-gray-900">Team view</span>
+                  <div className="h-4 w-4 rounded-[3px] bg-foreground flex items-center justify-center shadow-sm"><span className="text-white font-bold text-[7px]">Z</span></div>
+                  <span className="text-[10px] font-semibold text-foreground">Team view</span>
                 </div>
                 {[
                   { label: "Projects", active: false },
@@ -102,7 +102,7 @@ export default function ClientPortal() {
                   { label: "Internal notes", active: false },
                   { label: "Automations", active: false },
                 ].map(({ label, active }) => (
-                  <div key={label} className={`text-[9px] font-medium px-2 py-1.5 rounded-[4px] mb-0.5 transition-colors ${active ? "bg-indigo-50 text-indigo-600 border-l-2 border-indigo-500" : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"}`}
+                  <div key={label} className={`text-[9px] font-medium px-2 py-1.5 rounded-[4px] mb-0.5 transition-colors ${active ? "bg-indigo-50 text-indigo-600 border-l-2 border-indigo-500" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"}`}
                     style={active ? { paddingLeft: "calc(0.5rem - 2px)" } : {}}>
                     {label}
                   </div>
@@ -110,23 +110,23 @@ export default function ClientPortal() {
               </div>
 
               {/* Main content */}
-              <div className="flex-1 p-4 bg-gray-50/50">
-                <div className="text-[10px] font-bold text-gray-900 mb-3">Acme Corp — Project Files</div>
+              <div className="flex-1 p-4 bg-muted/50/50">
+                <div className="text-[10px] font-bold text-foreground mb-3">Acme Corp — Project Files</div>
 
                 {/* Shared docs table */}
                 <div className="space-y-1.5 mb-4">
                   {sharedDocs.map((doc, i) => (
-                    <div key={i} className="flex items-center gap-2.5 p-2 rounded-[6px] bg-white border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all group">
-                      <Paperclip className="h-3 w-3 text-gray-400 shrink-0" />
+                    <div key={i} className="flex items-center gap-2.5 p-2 rounded-[6px] bg-card border border-border hover:border-border hover:shadow-sm transition-all group">
+                      <Paperclip className="h-3 w-3 text-muted-foreground shrink-0" />
                       <div className="flex-1 min-w-0">
-                        <div className="text-[9px] font-semibold text-gray-800 truncate">{doc.name}</div>
-                        <div className="text-[7.5px] text-gray-500 mt-0.5">{doc.type} · {doc.time}</div>
+                        <div className="text-[9px] font-semibold text-foreground truncate">{doc.name}</div>
+                        <div className="text-[7.5px] text-muted-foreground mt-0.5">{doc.type} · {doc.time}</div>
                       </div>
-                      <span className="text-[7px] font-semibold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded-[3px]">{doc.version}</span>
+                      <span className="text-[7px] font-semibold text-muted-foreground bg-muted px-1.5 py-0.5 rounded-[3px]">{doc.version}</span>
                       <span className={`text-[7.5px] font-semibold px-1.5 py-0.5 rounded-[3px] ${
                         doc.status === "Approved" ? "bg-blue-50 text-blue-600" :
                         doc.status === "In Review" ? "bg-orange-50 text-orange-600" :
-                        "bg-gray-100 text-gray-500"
+                        "bg-muted text-muted-foreground"
                       }`}>{doc.status}</span>
                     </div>
                   ))}
@@ -138,7 +138,7 @@ export default function ClientPortal() {
                     <Lock className="h-2.5 w-2.5 text-orange-500" />
                     <span className="text-[8px] font-bold text-orange-600">Internal note (hidden from client)</span>
                   </div>
-                  <p className="text-[8.5px] text-gray-600 leading-relaxed">
+                  <p className="text-[8.5px] text-muted-foreground leading-relaxed">
                     Waiting on client feedback re: mobile nav. Don&apos;t push v4 until approved. — Sarah
                   </p>
                 </div>
@@ -147,7 +147,7 @@ export default function ClientPortal() {
           </div>
 
           {/* Right: Client portal view */}
-          <div className="rounded-xl border border-indigo-100 bg-white overflow-hidden shadow-premium"
+          <div className="rounded-xl border border-indigo-100 bg-card overflow-hidden shadow-premium"
             style={{ boxShadow: "0 0 0 1px rgba(99,102,241,0.1), 0 24px 48px rgba(0,0,0,0.06)" }}>
             <div className="px-4 py-2.5 border-b border-indigo-100 flex items-center gap-2 bg-indigo-50/30">
               <Globe className="h-3 w-3 text-indigo-500" />
@@ -160,16 +160,16 @@ export default function ClientPortal() {
 
             <div className="flex" style={{ minHeight: 380 }}>
               {/* Client nav */}
-              <div className="w-[140px] border-r border-indigo-50 bg-white p-3 shrink-0">
+              <div className="w-[140px] border-r border-indigo-50 bg-card p-3 shrink-0">
                 <div className="flex items-center gap-1.5 mb-4 px-1">
                   <div className="h-4 w-4 rounded-[3px] flex items-center justify-center shadow-sm bg-indigo-500">
                     <span className="text-white font-bold text-[7px]">A</span>
                   </div>
-                  <span className="text-[10px] font-semibold text-gray-900">Acme Corp</span>
+                  <span className="text-[10px] font-semibold text-foreground">Acme Corp</span>
                 </div>
                 {clientNavItems.map(({ icon: Icon, label, active, badge }) => (
                   <div key={label} className={`flex items-center gap-1.5 text-[9px] font-medium px-2 py-1.5 rounded-[4px] mb-0.5 transition-colors ${
-                    active ? "text-indigo-600 bg-indigo-50 border-l-2 border-indigo-500" : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+                    active ? "text-indigo-600 bg-indigo-50 border-l-2 border-indigo-500" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   }`} style={active ? { paddingLeft: "calc(0.5rem - 2px)" } : {}}>
                     <Icon className="h-2.5 w-2.5 shrink-0" />
                     {label}
@@ -183,13 +183,13 @@ export default function ClientPortal() {
               </div>
 
               {/* Client content */}
-              <div className="flex-1 p-4 bg-gray-50/50">
-                <div className="text-[10px] font-bold text-gray-900 mb-1">Welcome back, Alex 👋</div>
-                <div className="text-[8.5px] text-gray-500 mb-4">1 item awaiting your approval</div>
+              <div className="flex-1 p-4 bg-muted/50/50">
+                <div className="text-[10px] font-bold text-foreground mb-1">Welcome back, Alex 👋</div>
+                <div className="text-[8.5px] text-muted-foreground mb-4">1 item awaiting your approval</div>
 
                 {/* Approval flow */}
-                <div className="rounded-[8px] border border-gray-200 bg-white shadow-sm p-3 mb-3">
-                  <div className="text-[9px] font-bold text-gray-900 mb-3">Homepage v4 — Approval Flow</div>
+                <div className="rounded-[8px] border border-border bg-card shadow-sm p-3 mb-3">
+                  <div className="text-[9px] font-bold text-foreground mb-3">Homepage v4 — Approval Flow</div>
                   <div className="flex items-center gap-0">
                     {approvalSteps.map((step, i) => {
                       const Icon = step.icon;
@@ -219,14 +219,14 @@ export default function ClientPortal() {
                 </div>
 
                 {/* Shared file */}
-                <div className="rounded-[8px] border border-gray-200 bg-white shadow-sm p-3 mb-3">
+                <div className="rounded-[8px] border border-border bg-card shadow-sm p-3 mb-3">
                   <div className="flex items-center gap-2">
                     <div className="h-8 w-8 rounded-[5px] bg-indigo-50 border border-indigo-100 flex items-center justify-center">
                       <Paperclip className="h-3.5 w-3.5 text-indigo-500" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-[9.5px] font-semibold text-gray-900">Homepage_v4_Final.fig</div>
-                      <div className="text-[8px] text-gray-500">Figma · 12.4 MB · Shared by Sarah</div>
+                      <div className="text-[9.5px] font-semibold text-foreground">Homepage_v4_Final.fig</div>
+                      <div className="text-[8px] text-muted-foreground">Figma · 12.4 MB · Shared by Sarah</div>
                     </div>
                     <button className="flex items-center gap-1 text-[8.5px] font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100 px-2 py-1 rounded-[4px] hover:bg-indigo-100 transition-colors shadow-sm">
                       View <ChevronRight className="h-2.5 w-2.5" />

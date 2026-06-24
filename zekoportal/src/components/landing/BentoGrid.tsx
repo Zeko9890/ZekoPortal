@@ -48,18 +48,18 @@ export default function BentoGrid() {
               </p>
             </div>
             
-            <div className="md:w-1/2 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-100 p-6 relative min-h-[200px] flex items-center justify-center">
+            <div className="md:w-1/2 bg-muted/50 border-t md:border-t-0 md:border-l border-border p-6 relative min-h-[200px] flex items-center justify-center">
               <div className="absolute inset-0 bg-grid-dense opacity-30" />
               <div className="relative z-10 flex flex-col items-center gap-2">
-                <div className="bg-white border border-gray-200 px-3 py-2 rounded-[6px] text-[10px] font-bold text-gray-900 shadow-sm">
+                <div className="bg-card border border-border px-3 py-2 rounded-[6px] text-[10px] font-bold text-foreground shadow-sm">
                   IF Status = Approved
                 </div>
                 <div className="h-4 w-px bg-gray-200" />
-                <div className="bg-white border border-yellow-200 px-3 py-2 rounded-[6px] text-[10px] font-bold text-yellow-600 shadow-sm">
+                <div className="bg-card border border-yellow-200 px-3 py-2 rounded-[6px] text-[10px] font-bold text-yellow-600 shadow-sm">
                   THEN Notify @engineering
                 </div>
                 <div className="h-4 w-px bg-gray-200" />
-                <div className="bg-white border border-sky-200 px-3 py-2 rounded-[6px] text-[10px] font-bold text-sky-600 shadow-sm">
+                <div className="bg-card border border-sky-200 px-3 py-2 rounded-[6px] text-[10px] font-bold text-sky-600 shadow-sm">
                   AND Move to "Ready for Dev"
                 </div>
               </div>
@@ -77,12 +77,12 @@ export default function BentoGrid() {
             </p>
             
             <div className="mt-auto space-y-2">
-              <div className="flex items-center justify-between p-2 rounded-[6px] bg-gray-50 border border-gray-200">
-                <span className="text-[10px] font-bold text-gray-600">Client View</span>
+              <div className="flex items-center justify-between p-2 rounded-[6px] bg-muted/50 border border-border">
+                <span className="text-[10px] font-bold text-muted-foreground">Client View</span>
                 <div className="h-2 w-6 rounded-full bg-blue-500" />
               </div>
-              <div className="flex items-center justify-between p-2 rounded-[6px] bg-gray-50 border border-gray-200">
-                <span className="text-[10px] font-bold text-gray-600">Internal Comments</span>
+              <div className="flex items-center justify-between p-2 rounded-[6px] bg-muted/50 border border-border">
+                <span className="text-[10px] font-bold text-muted-foreground">Internal Comments</span>
                 <div className="h-2 w-6 rounded-full bg-gray-200" />
               </div>
             </div>
@@ -111,15 +111,15 @@ export default function BentoGrid() {
               </p>
             </div>
             
-            <div className="flex-1 w-full bg-gray-50 rounded-[8px] border border-gray-200 p-4 space-y-3">
+            <div className="flex-1 w-full bg-muted/50 rounded-[8px] border border-border p-4 space-y-3">
               {[
                 { user: "Sarah", action: "approved", target: "Homepage v4", time: "2m ago" },
                 { user: "James", action: "uploaded", target: "Brand_Assets.zip", time: "15m ago" },
                 { user: "System", action: "created task", target: "Update Auth Flow", time: "1h ago" }
               ].map((log, i) => (
                 <div key={i} className="flex justify-between items-center text-[9px] font-mono">
-                  <span className="text-gray-600"><span className="text-gray-900 font-bold">{log.user}</span> {log.action} <span className="text-sky-500">{log.target}</span></span>
-                  <span className="text-gray-400">{log.time}</span>
+                  <span className="text-muted-foreground"><span className="text-foreground font-bold">{log.user}</span> {log.action} <span className="text-sky-500">{log.target}</span></span>
+                  <span className="text-muted-foreground">{log.time}</span>
                 </div>
               ))}
             </div>

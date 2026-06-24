@@ -4,64 +4,72 @@
 
 :root {
   /* ── Surfaces ─────────────────────────────── */
-  --background: 0 0% 100%;        /* Pure White */
-  --foreground: 240 5% 15%;       /* Dark Charcoal */
+  --background: 210 33% 99%;      /* #FAFBFC */
+  --foreground: 221 39% 11%;      /* #111827 */
 
-  --card: 0 0% 100%;
-  --card-foreground: 240 5% 15%;
+  --card: 0 0% 100%;              /* #FFFFFF */
+  --card-foreground: 221 39% 11%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 240 5% 15%;
+  --popover-foreground: 221 39% 11%;
 
   /* ── Brand: Dark Navy Primary, White Secondary ─────────────── */
   --primary: 222 47% 11%;         /* Dark Navy for Primary Buttons */
   --primary-foreground: 0 0% 98%;
 
-  --secondary: 0 0% 100%;         /* White */
-  --secondary-foreground: 240 5% 15%;
+  --secondary: 216 33% 97%;       /* #F5F7FA */
+  --secondary-foreground: 221 39% 11%;
 
   /* ── Supporting tones ────────────────────── */
-  --muted: 240 5% 96%;            /* Light gray */
-  --muted-foreground: 240 5% 45%;
+  --muted: 216 33% 97%;           /* Same as secondary */
+  --muted-foreground: 215 16% 47%;/* #64748B */
 
-  --accent: 24.6 95% 53.1%;       /* #F97316 Orange */
+  --accent: 199 89% 60%;          /* Light Blue (Primary Accent) */
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
   /* ── Chrome ───────────────────────────────── */
-  --border: 240 5% 90%;           /* Subtle gray border */
-  --input: 240 5% 90%;
+  --border: 222 47% 11% / 0.08;   /* rgba(15,23,42,0.08) */
+  --input: 222 47% 11% / 0.08;
   --ring: 199 89% 60%;            /* Light blue */
   
-  --radius: 0.5rem;               /* Slightly rounder for modern feel */
+  --radius: 0.5rem;
 
   /* Sidebar width tokens */
   --sidebar-width: 240px;
   --sidebar-collapsed-width: 68px;
 }
 
-/* Redefine dark mode to act just like light mode, enforcing light theme globally without breaking class dependencies */
+/* ── Dark Mode ─────────────────────────────── */
 .dark {
-  --background: 0 0% 100%;
-  --foreground: 240 5% 15%;
-  --card: 0 0% 100%;
-  --card-foreground: 240 5% 15%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 240 5% 15%;
-  --primary: 222 47% 11%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 100%;
-  --secondary-foreground: 240 5% 15%;
-  --muted: 240 5% 96%;
-  --muted-foreground: 240 5% 45%;
-  --accent: 24.6 95% 53.1%;
+  --background: 0 0% 4%;          /* #0A0A0A */
+  --foreground: 0 0% 98%;
+
+  --card: 0 0% 7%;                /* #111111 */
+  --card-foreground: 0 0% 98%;
+
+  --popover: 0 0% 7%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 0% 98%;
+  --primary-foreground: 222 47% 11%;
+
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 0 0% 15%;
+  --muted-foreground: 215 16% 65%;
+
+  --accent: 199 89% 60%;          /* Light Blue */
   --accent-foreground: 0 0% 100%;
+
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --border: 240 5% 90%;
-  --input: 240 5% 90%;
+
+  --border: 0 0% 100% / 0.08;     /* rgba(255,255,255,0.08) */
+  --input: 0 0% 100% / 0.08;
   --ring: 199 89% 60%;
   --radius: 0.5rem;
   --sidebar-width: 240px;
@@ -209,21 +217,45 @@ body {
    CARD HOVER — Soft Lift & Shadow
    ============================================ */
 .card-hover {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
 }
 .card-hover:hover {
-  border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-  transform: translateY(-2px);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.04);
+  transform: translateY(-4px);
+}
+.dark .card-hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.dark .card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-interactive {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
 }
 .card-interactive:hover {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-  transform: translateY(-3px);
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.04);
+  transform: translateY(-4px);
+}
+.dark .card-interactive {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.dark .card-interactive:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Premium Glows */
+.glow-orange {
+  box-shadow: 0 0 40px 10px rgba(251, 146, 60, 0.12);
+}
+.glow-blue {
+  box-shadow: 0 0 40px 10px rgba(59, 130, 246, 0.10);
 }
 
 /* ============================================
@@ -331,19 +363,19 @@ body {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .dark .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(17, 17, 17, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .border-crisp {
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.06);
 }
 .dark .border-crisp {
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .shadow-premium {
@@ -498,13 +530,16 @@ body {
    BUTTON MICRO-INTERACTIONS
    ============================================ */
 .btn-interactive {
-  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 .btn-interactive:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.12);
+}
+.dark .btn-interactive:hover {
+  box-shadow: 0 8px 24px -4px rgba(255, 255, 255, 0.12);
 }
 .btn-interactive:active {
   transform: translateY(0px) scale(0.98);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05);
 }
