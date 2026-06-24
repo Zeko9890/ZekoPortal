@@ -11,7 +11,7 @@ import Footer from "@/components/landing/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#09090B] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
       <Navbar />
       {/* Section 1 — Split-screen hero with product preview */}
       <SplitHero />

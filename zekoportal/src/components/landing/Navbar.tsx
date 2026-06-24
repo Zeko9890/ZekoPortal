@@ -25,17 +25,17 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-panel" : "bg-transparent"
+        scrolled ? "bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <div className="flex items-center justify-between h-[52px]">
           {/* Brand - Sharp & Premium */}
           <Link href="/" className="flex items-center gap-2 shrink-0 group">
-            <div className="flex h-6 w-6 items-center justify-center bg-white text-black font-bold text-[10px] select-none rounded-[4px]">
+            <div className="flex h-6 w-6 items-center justify-center bg-gray-900 text-white font-bold text-[10px] select-none rounded-[4px] shadow-sm">
               Z
             </div>
-            <span className="font-semibold tracking-tight text-[14px] text-white/90 group-hover:text-white transition-colors">
+            <span className="font-semibold tracking-tight text-[14px] text-gray-900 transition-colors">
               ZekoPortal
             </span>
           </Link>
@@ -46,7 +46,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[13px] font-medium text-white/50 hover:text-white hover:bg-white/10 px-3 py-1.5 rounded-md transition-all duration-200"
+                className="text-[13px] font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-md transition-all duration-200"
               >
                 {link.label}
               </a>
@@ -58,13 +58,13 @@ export default function Navbar() {
             <ThemeToggle />
             <Link
               href="/login"
-              className="text-[13px] font-medium text-white/50 hover:text-white px-3 py-1.5 transition-colors"
+              className="text-[13px] font-medium text-gray-500 hover:text-gray-900 px-3 py-1.5 transition-colors"
             >
               Sign in
             </Link>
             <Link
               href="/signup"
-              className="btn-interactive text-[12px] font-medium text-black bg-white hover:bg-white/90 px-3.5 py-1.5 rounded-[4px] transition-all"
+              className="btn-interactive text-[12px] font-medium text-primary-foreground bg-primary hover:bg-primary/90 px-3.5 py-1.5 rounded-[4px] transition-all shadow-sm"
             >
               Start Free
             </Link>
@@ -73,7 +73,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-1 text-white/50 hover:text-white"
+            className="md:hidden p-1 text-gray-500 hover:text-gray-900"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -82,30 +82,30 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden glass-panel border-t-0 animate-fade-in">
+        <div className="md:hidden bg-white border-b border-gray-100 animate-fade-in shadow-md">
           <div className="px-5 py-4 space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-[14px] font-medium text-white/60 hover:text-white py-2"
+                className="block text-[14px] font-medium text-gray-600 hover:text-gray-900 py-2"
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-4 mt-2 border-t border-white/10 flex flex-col gap-2">
+            <div className="pt-4 mt-2 border-t border-gray-100 flex flex-col gap-2">
               <Link
                 href="/login"
                 onClick={() => setMobileOpen(false)}
-                className="text-[14px] font-medium text-white/60 hover:text-white py-2"
+                className="text-[14px] font-medium text-gray-600 hover:text-gray-900 py-2"
               >
                 Sign in
               </Link>
               <Link
                 href="/signup"
                 onClick={() => setMobileOpen(false)}
-                className="btn-interactive text-[14px] font-medium text-black bg-white hover:bg-white/90 px-4 py-2 rounded-[4px] text-center transition-all"
+                className="btn-interactive text-[14px] font-medium text-primary-foreground bg-primary hover:bg-primary/90 px-4 py-2 rounded-[4px] text-center transition-all shadow-sm"
               >
                 Start Free
               </Link>

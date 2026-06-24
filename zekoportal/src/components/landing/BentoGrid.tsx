@@ -40,7 +40,7 @@ export default function BentoGrid() {
           <div className="md:col-span-2 glass-panel rounded-xl border-crisp p-0 overflow-hidden flex flex-col md:flex-row group">
             <div className="p-6 md:w-1/2 flex flex-col justify-center">
               <div className="h-8 w-8 rounded-[6px] bg-yellow-500/10 flex items-center justify-center mb-4">
-                <Zap className="h-4 w-4 text-yellow-400" />
+                <Zap className="h-4 w-4 text-yellow-500" />
               </div>
               <h3 className="text-[15px] font-bold text-foreground mb-2">Visual Automations</h3>
               <p className="text-[12px] text-muted-foreground font-medium leading-relaxed">
@@ -48,18 +48,18 @@ export default function BentoGrid() {
               </p>
             </div>
             
-            <div className="md:w-1/2 bg-[#050505] border-t md:border-t-0 md:border-l border-white/5 p-6 relative min-h-[200px] flex items-center justify-center dark">
+            <div className="md:w-1/2 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-100 p-6 relative min-h-[200px] flex items-center justify-center">
               <div className="absolute inset-0 bg-grid-dense opacity-30" />
               <div className="relative z-10 flex flex-col items-center gap-2">
-                <div className="bg-[#111] border border-white/10 px-3 py-2 rounded-[6px] text-[10px] font-bold text-white shadow-premium">
+                <div className="bg-white border border-gray-200 px-3 py-2 rounded-[6px] text-[10px] font-bold text-gray-900 shadow-sm">
                   IF Status = Approved
                 </div>
-                <div className="h-4 w-px bg-white/20" />
-                <div className="bg-[#111] border border-yellow-500/30 px-3 py-2 rounded-[6px] text-[10px] font-bold text-yellow-400 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
+                <div className="h-4 w-px bg-gray-200" />
+                <div className="bg-white border border-yellow-200 px-3 py-2 rounded-[6px] text-[10px] font-bold text-yellow-600 shadow-sm">
                   THEN Notify @engineering
                 </div>
-                <div className="h-4 w-px bg-white/20" />
-                <div className="bg-[#111] border border-blue-500/30 px-3 py-2 rounded-[6px] text-[10px] font-bold text-blue-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                <div className="h-4 w-px bg-gray-200" />
+                <div className="bg-white border border-sky-200 px-3 py-2 rounded-[6px] text-[10px] font-bold text-sky-600 shadow-sm">
                   AND Move to "Ready for Dev"
                 </div>
               </div>
@@ -69,7 +69,7 @@ export default function BentoGrid() {
           {/* Role Based Access UI */}
           <div className="md:col-span-1 glass-panel rounded-xl border-crisp p-6 flex flex-col">
             <div className="h-8 w-8 rounded-[6px] bg-blue-500/10 flex items-center justify-center mb-4">
-              <ShieldCheck className="h-4 w-4 text-blue-400" />
+              <ShieldCheck className="h-4 w-4 text-blue-500" />
             </div>
             <h3 className="text-[15px] font-bold text-foreground mb-2">Granular Access</h3>
             <p className="text-[12px] text-muted-foreground font-medium mb-6">
@@ -77,13 +77,13 @@ export default function BentoGrid() {
             </p>
             
             <div className="mt-auto space-y-2">
-              <div className="flex items-center justify-between p-2 rounded-[6px] bg-[#0A0A0A] border border-white/5">
-                <span className="text-[10px] font-bold text-white/70">Client View</span>
+              <div className="flex items-center justify-between p-2 rounded-[6px] bg-gray-50 border border-gray-200">
+                <span className="text-[10px] font-bold text-gray-600">Client View</span>
                 <div className="h-2 w-6 rounded-full bg-blue-500" />
               </div>
-              <div className="flex items-center justify-between p-2 rounded-[6px] bg-[#0A0A0A] border border-white/5">
-                <span className="text-[10px] font-bold text-white/70">Internal Comments</span>
-                <div className="h-2 w-6 rounded-full bg-white/10" />
+              <div className="flex items-center justify-between p-2 rounded-[6px] bg-gray-50 border border-gray-200">
+                <span className="text-[10px] font-bold text-gray-600">Internal Comments</span>
+                <div className="h-2 w-6 rounded-full bg-gray-200" />
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ export default function BentoGrid() {
           {/* Connected Data */}
           <div className="md:col-span-1 glass-panel rounded-xl border-crisp p-6">
             <div className="h-8 w-8 rounded-[6px] bg-slate-500/10 flex items-center justify-center mb-4">
-              <Database className="h-4 w-4 text-slate-400" />
+              <Database className="h-4 w-4 text-slate-500" />
             </div>
             <h3 className="text-[15px] font-bold text-foreground mb-2">Single Source of Truth</h3>
             <p className="text-[12px] text-muted-foreground font-medium">
@@ -103,7 +103,7 @@ export default function BentoGrid() {
           <div className="md:col-span-2 glass-panel rounded-xl border-crisp p-6 flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
               <div className="h-8 w-8 rounded-[6px] bg-blue-500/10 flex items-center justify-center mb-4">
-                <GitBranch className="h-4 w-4 text-blue-400" />
+                <GitBranch className="h-4 w-4 text-blue-500" />
               </div>
               <h3 className="text-[15px] font-bold text-foreground mb-2">Comprehensive Audit Trails</h3>
               <p className="text-[12px] text-muted-foreground font-medium">
@@ -111,15 +111,15 @@ export default function BentoGrid() {
               </p>
             </div>
             
-            <div className="flex-1 w-full bg-[#050505] rounded-[8px] border border-white/10 p-4 space-y-3 dark">
+            <div className="flex-1 w-full bg-gray-50 rounded-[8px] border border-gray-200 p-4 space-y-3">
               {[
                 { user: "Sarah", action: "approved", target: "Homepage v4", time: "2m ago" },
                 { user: "James", action: "uploaded", target: "Brand_Assets.zip", time: "15m ago" },
                 { user: "System", action: "created task", target: "Update Auth Flow", time: "1h ago" }
               ].map((log, i) => (
                 <div key={i} className="flex justify-between items-center text-[9px] font-mono">
-                  <span className="text-white/60"><span className="text-white font-bold">{log.user}</span> {log.action} <span className="text-blue-400">{log.target}</span></span>
-                  <span className="text-white/30">{log.time}</span>
+                  <span className="text-gray-600"><span className="text-gray-900 font-bold">{log.user}</span> {log.action} <span className="text-sky-500">{log.target}</span></span>
+                  <span className="text-gray-400">{log.time}</span>
                 </div>
               ))}
             </div>

@@ -74,18 +74,18 @@ const fileRows = [
 ];
 
 const statusColor: Record<string, string> = {
-  "In Review": "bg-orange-500/15 text-orange-400",
-  "Done": "bg-blue-500/15 text-blue-400",
-  "Active": "bg-sky-500/15 text-sky-400",
-  "Pending": "bg-white/8 text-white/40",
-  "Completed": "bg-blue-500/15 text-blue-400",
-  "Approved": "bg-blue-500/15 text-blue-400",
-  "Awaiting": "bg-orange-500/15 text-orange-400",
-  "Changes Req.": "bg-red-500/15 text-red-400",
-  "At risk": "bg-red-500/15 text-red-400",
-  "On track": "bg-blue-500/15 text-blue-400",
-  "Delivered": "bg-blue-500/15 text-blue-400",
-  "Pending invite": "bg-white/8 text-white/30",
+  "In Review": "bg-orange-50 text-orange-600",
+  "Done": "bg-blue-50 text-blue-600",
+  "Active": "bg-sky-50 text-sky-600",
+  "Pending": "bg-gray-100 text-gray-500",
+  "Completed": "bg-blue-50 text-blue-600",
+  "Approved": "bg-blue-50 text-blue-600",
+  "Awaiting": "bg-orange-50 text-orange-600",
+  "Changes Req.": "bg-red-50 text-red-600",
+  "At risk": "bg-red-50 text-red-600",
+  "On track": "bg-blue-50 text-blue-600",
+  "Delivered": "bg-blue-50 text-blue-600",
+  "Pending invite": "bg-gray-100 text-gray-400",
 };
 
 export default function WorkspaceOverview() {
@@ -96,14 +96,14 @@ export default function WorkspaceOverview() {
   return (
     <section id="features" className="py-24 bg-muted border-y border-border relative overflow-hidden transition-colors duration-500">
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(56,189,248,0.04) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(56,189,248,0.08) 0%, transparent 70%)" }} />
 
-      <div ref={revealRef} className="reveal max-w-[1100px] mx-auto px-6 md:px-10">
+      <div ref={revealRef} className="reveal max-w-[1100px] mx-auto px-6 md:px-10 relative z-10">
 
         {/* Header */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <p className="text-[11px] font-semibold text-blue-500 uppercase tracking-widest mb-3">Workspace Overview</p>
+            <p className="text-[11px] font-semibold text-sky-500 uppercase tracking-widest mb-3">Workspace Overview</p>
             <h2 className="text-[30px] md:text-[38px] font-bold tracking-tight text-foreground leading-tight">
               Everything in one view.
               <br />
@@ -126,10 +126,10 @@ export default function WorkspaceOverview() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] text-[11px] font-semibold transition-all ${
                   isActive
-                    ? "text-foreground border border-border"
-                    : "text-muted-foreground hover:text-foreground border border-transparent hover:border-border/50"
+                    ? "text-foreground border border-gray-200 bg-white shadow-sm"
+                    : "text-muted-foreground hover:text-foreground border border-transparent hover:border-gray-200 hover:bg-white"
                 }`}
-                style={isActive ? { backgroundColor: `${tab.accent}15`, borderColor: `${tab.accent}30`, color: tab.accent } : {}}
+                style={isActive ? { color: tab.accent } : {}}
               >
                 <Icon className="h-3 w-3" />
                 {tab.label}
@@ -139,82 +139,82 @@ export default function WorkspaceOverview() {
         </div>
 
         {/* Dashboard panel */}
-        <div className="rounded-xl border border-border bg-[#0A0A0A] overflow-hidden shadow-[0_24px_48px_rgba(0,0,0,0.15)] dark:shadow-[0_24px_48px_rgba(0,0,0,0.6)] dark">
+        <div className="rounded-xl border border-gray-200 bg-white overflow-hidden shadow-[0_24px_48px_-12px_rgba(0,0,0,0.05)]">
 
           {/* Panel header */}
-          <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/5 bg-[#0D0D0D]">
+          <div className="flex items-center justify-between px-4 py-2.5 border-b border-gray-100 bg-gray-50">
             <div className="flex items-center gap-2">
               <currentTab.icon className="h-3.5 w-3.5" style={{ color: currentTab.accent }} />
-              <span className="text-[11px] font-semibold text-white/70">{currentTab.label}</span>
+              <span className="text-[11px] font-semibold text-gray-900">{currentTab.label}</span>
             </div>
             <div className="flex items-center gap-2">
-              <button className="text-[9px] font-medium text-white/30 hover:text-white/60 px-2 py-1 rounded-[4px] border border-white/8 transition-colors">
+              <button className="text-[9px] font-medium text-gray-500 hover:text-gray-900 px-2 py-1 rounded-[4px] border border-gray-200 transition-colors bg-white shadow-sm">
                 Filter
               </button>
-              <button className="text-[9px] font-medium text-white/30 hover:text-white/60 px-2 py-1 rounded-[4px] border border-white/8 transition-colors">
+              <button className="text-[9px] font-medium text-gray-500 hover:text-gray-900 px-2 py-1 rounded-[4px] border border-gray-200 transition-colors bg-white shadow-sm">
                 Sort
               </button>
-              <MoreHorizontal className="h-3.5 w-3.5 text-white/20" />
+              <MoreHorizontal className="h-3.5 w-3.5 text-gray-400" />
             </div>
           </div>
 
           {/* Column headers */}
-          <div className="px-4 py-2 border-b border-white/4 bg-[#080808]">
+          <div className="px-4 py-2 border-b border-gray-100 bg-white">
             {activeTab === "tasks" && (
-              <div className="grid grid-cols-[2fr_1.2fr_80px_80px_80px_32px] gap-3 text-[9px] font-bold text-white/20 uppercase tracking-wider">
+              <div className="grid grid-cols-[2fr_1.2fr_80px_80px_80px_32px] gap-3 text-[9px] font-bold text-gray-400 uppercase tracking-wider">
                 <span>Task</span><span>Project</span><span>Status</span><span>Priority</span><span>Due</span><span></span>
               </div>
             )}
             {activeTab === "projects" && (
-              <div className="grid grid-cols-[2fr_1.2fr_100px_80px_100px] gap-3 text-[9px] font-bold text-white/20 uppercase tracking-wider">
+              <div className="grid grid-cols-[2fr_1.2fr_100px_80px_100px] gap-3 text-[9px] font-bold text-gray-400 uppercase tracking-wider">
                 <span>Project</span><span>Client</span><span>Progress</span><span>Status</span><span>Health</span>
               </div>
             )}
             {activeTab === "clients" && (
-              <div className="grid grid-cols-[1.5fr_1.5fr_80px_100px_80px] gap-3 text-[9px] font-bold text-white/20 uppercase tracking-wider">
+              <div className="grid grid-cols-[1.5fr_1.5fr_80px_100px_80px] gap-3 text-[9px] font-bold text-gray-400 uppercase tracking-wider">
                 <span>Client</span><span>Company</span><span>Projects</span><span>Portal</span><span>Last seen</span>
               </div>
             )}
             {activeTab === "approvals" && (
-              <div className="grid grid-cols-[2fr_1.2fr_1fr_90px_80px] gap-3 text-[9px] font-bold text-white/20 uppercase tracking-wider">
+              <div className="grid grid-cols-[2fr_1.2fr_1fr_90px_80px] gap-3 text-[9px] font-bold text-gray-400 uppercase tracking-wider">
                 <span>Item</span><span>Requested by</span><span>Client</span><span>Status</span><span>Due</span>
               </div>
             )}
             {activeTab === "files" && (
-              <div className="grid grid-cols-[2fr_80px_80px_80px_80px_50px] gap-3 text-[9px] font-bold text-white/20 uppercase tracking-wider">
+              <div className="grid grid-cols-[2fr_80px_80px_80px_80px_50px] gap-3 text-[9px] font-bold text-gray-400 uppercase tracking-wider">
                 <span>Name</span><span>Type</span><span>Size</span><span>By</span><span>Updated</span><span>Ver.</span>
               </div>
             )}
           </div>
 
           {/* Rows */}
-          <div className="divide-y divide-white/4">
+          <div className="divide-y divide-gray-100">
             {activeTab === "tasks" && taskRows.map((row, i) => (
-              <div key={i} className="grid grid-cols-[2fr_1.2fr_80px_80px_80px_32px] gap-3 px-4 py-2.5 hover:bg-white/2 transition-colors items-center group">
+              <div key={i} className="grid grid-cols-[2fr_1.2fr_80px_80px_80px_32px] gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors items-center group">
                 <div className="flex items-center gap-2">
-                  <Circle className="h-2.5 w-2.5 text-white/20 shrink-0" />
-                  <span className="text-[10px] font-medium text-white/75 truncate">{row.name}</span>
+                  <Circle className="h-2.5 w-2.5 text-gray-300 shrink-0" />
+                  <span className="text-[10px] font-medium text-gray-900 truncate">{row.name}</span>
                 </div>
-                <span className="text-[9px] text-white/35 truncate">{row.project}</span>
+                <span className="text-[9px] text-gray-500 truncate">{row.project}</span>
                 <span className={`text-[8px] font-semibold px-1.5 py-0.5 rounded-[3px] w-fit ${statusColor[row.status]}`}>{row.status}</span>
-                <span className={`text-[8px] font-semibold ${row.priority === "High" ? "text-red-400" : row.priority === "Medium" ? "text-orange-400" : "text-white/30"}`}>{row.priority}</span>
-                <span className="text-[9px] text-white/30 font-medium">{row.due}</span>
-                <div className="h-5 w-5 rounded-full flex items-center justify-center text-[7px] font-bold text-white" style={{ backgroundColor: row.aColor }}>{row.assignee}</div>
+                <span className={`text-[8px] font-semibold ${row.priority === "High" ? "text-red-500" : row.priority === "Medium" ? "text-orange-500" : "text-gray-400"}`}>{row.priority}</span>
+                <span className="text-[9px] text-gray-400 font-medium">{row.due}</span>
+                <div className="h-5 w-5 rounded-full flex items-center justify-center text-[7px] font-bold text-white shadow-sm" style={{ backgroundColor: row.aColor }}>{row.assignee}</div>
               </div>
             ))}
 
             {activeTab === "projects" && projectRows.map((row, i) => (
-              <div key={i} className="grid grid-cols-[2fr_1.2fr_100px_80px_100px] gap-3 px-4 py-2.5 hover:bg-white/2 transition-colors items-center">
+              <div key={i} className="grid grid-cols-[2fr_1.2fr_100px_80px_100px] gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors items-center">
                 <div className="flex items-center gap-2">
-                  <FolderOpen className="h-3 w-3 text-white/20 shrink-0" />
-                  <span className="text-[10px] font-medium text-white/75 truncate">{row.name}</span>
+                  <FolderOpen className="h-3 w-3 text-gray-400 shrink-0" />
+                  <span className="text-[10px] font-medium text-gray-900 truncate">{row.name}</span>
                 </div>
-                <span className="text-[9px] text-white/35 truncate">{row.client}</span>
+                <span className="text-[9px] text-gray-500 truncate">{row.client}</span>
                 <div className="flex items-center gap-1.5">
-                  <div className="flex-1 h-1 bg-white/8 rounded-full overflow-hidden">
-                    <div className="h-full bg-[#38BDF8] rounded-full" style={{ width: `${Math.round((row.done / row.tasks) * 100)}%` }} />
+                  <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-sky-500 rounded-full" style={{ width: `${Math.round((row.done / row.tasks) * 100)}%` }} />
                   </div>
-                  <span className="text-[8px] text-white/25 font-mono w-8 shrink-0">{row.done}/{row.tasks}</span>
+                  <span className="text-[8px] text-gray-400 font-mono w-8 shrink-0">{row.done}/{row.tasks}</span>
                 </div>
                 <span className={`text-[8px] font-semibold px-1.5 py-0.5 rounded-[3px] w-fit ${statusColor[row.status]}`}>{row.status}</span>
                 <span className={`text-[8px] font-semibold px-1.5 py-0.5 rounded-[3px] w-fit ${statusColor[row.health]}`}>{row.health}</span>
@@ -222,52 +222,52 @@ export default function WorkspaceOverview() {
             ))}
 
             {activeTab === "clients" && clientRows.map((row, i) => (
-              <div key={i} className="grid grid-cols-[1.5fr_1.5fr_80px_100px_80px] gap-3 px-4 py-2.5 hover:bg-white/2 transition-colors items-center">
+              <div key={i} className="grid grid-cols-[1.5fr_1.5fr_80px_100px_80px] gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors items-center">
                 <div className="flex items-center gap-2">
-                  <div className="h-5 w-5 rounded-full flex items-center justify-center text-[7px] font-bold text-white shrink-0" style={{ backgroundColor: row.color }}>{row.avatar}</div>
-                  <span className="text-[10px] font-medium text-white/75 truncate">{row.name}</span>
+                  <div className="h-5 w-5 rounded-full flex items-center justify-center text-[7px] font-bold text-white shrink-0 shadow-sm" style={{ backgroundColor: row.color }}>{row.avatar}</div>
+                  <span className="text-[10px] font-medium text-gray-900 truncate">{row.name}</span>
                 </div>
-                <span className="text-[9px] text-white/35">{row.company}</span>
-                <span className="text-[9px] text-white/50 font-medium">{row.projects} project{row.projects > 1 ? "s" : ""}</span>
-                <span className={`text-[8px] font-semibold px-1.5 py-0.5 rounded-[3px] w-fit ${statusColor[row.portal] || "bg-white/8 text-white/40"}`}>{row.portal}</span>
-                <span className="text-[9px] text-white/30">{row.lastSeen}</span>
+                <span className="text-[9px] text-gray-500">{row.company}</span>
+                <span className="text-[9px] text-gray-500 font-medium">{row.projects} project{row.projects > 1 ? "s" : ""}</span>
+                <span className={`text-[8px] font-semibold px-1.5 py-0.5 rounded-[3px] w-fit ${statusColor[row.portal] || "bg-gray-100 text-gray-500"}`}>{row.portal}</span>
+                <span className="text-[9px] text-gray-400">{row.lastSeen}</span>
               </div>
             ))}
 
             {activeTab === "approvals" && approvalRows.map((row, i) => (
-              <div key={i} className="grid grid-cols-[2fr_1.2fr_1fr_90px_80px] gap-3 px-4 py-2.5 hover:bg-white/2 transition-colors items-center">
+              <div key={i} className="grid grid-cols-[2fr_1.2fr_1fr_90px_80px] gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors items-center">
                 <div className="flex items-center gap-2">
-                  <ThumbsUp className="h-3 w-3 text-white/15 shrink-0" />
-                  <span className="text-[10px] font-medium text-white/75 truncate">{row.item}</span>
+                  <ThumbsUp className="h-3 w-3 text-gray-400 shrink-0" />
+                  <span className="text-[10px] font-medium text-gray-900 truncate">{row.item}</span>
                 </div>
-                <span className="text-[9px] text-white/35 truncate">{row.requestedBy}</span>
-                <span className="text-[9px] text-white/35 truncate">{row.client}</span>
+                <span className="text-[9px] text-gray-500 truncate">{row.requestedBy}</span>
+                <span className="text-[9px] text-gray-500 truncate">{row.client}</span>
                 <span className={`text-[8px] font-semibold px-1.5 py-0.5 rounded-[3px] w-fit ${statusColor[row.status]}`}>{row.status}</span>
-                <span className="text-[9px] text-white/30 font-medium">{row.due}</span>
+                <span className="text-[9px] text-gray-400 font-medium">{row.due}</span>
               </div>
             ))}
 
             {activeTab === "files" && fileRows.map((row, i) => (
-              <div key={i} className="grid grid-cols-[2fr_80px_80px_80px_80px_50px] gap-3 px-4 py-2.5 hover:bg-white/2 transition-colors items-center">
+              <div key={i} className="grid grid-cols-[2fr_80px_80px_80px_80px_50px] gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors items-center">
                 <div className="flex items-center gap-2">
-                  <Paperclip className="h-3 w-3 text-white/20 shrink-0" />
-                  <span className="text-[10px] font-medium text-white/75 truncate">{row.name}</span>
+                  <Paperclip className="h-3 w-3 text-gray-400 shrink-0" />
+                  <span className="text-[10px] font-medium text-gray-900 truncate">{row.name}</span>
                 </div>
-                <span className="text-[9px] text-white/35">{row.type}</span>
-                <span className="text-[9px] text-white/35 font-mono">{row.size}</span>
-                <span className="text-[9px] text-white/35">{row.updatedBy}</span>
-                <span className="text-[9px] text-white/30">{row.updated}</span>
-                <span className="text-[8px] font-semibold text-white/25 bg-white/5 px-1.5 py-0.5 rounded-[3px] w-fit">{row.version}</span>
+                <span className="text-[9px] text-gray-500">{row.type}</span>
+                <span className="text-[9px] text-gray-500 font-mono">{row.size}</span>
+                <span className="text-[9px] text-gray-500">{row.updatedBy}</span>
+                <span className="text-[9px] text-gray-400">{row.updated}</span>
+                <span className="text-[8px] font-semibold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded-[3px] w-fit">{row.version}</span>
               </div>
             ))}
           </div>
 
           {/* Footer */}
-          <div className="px-4 py-2 border-t border-white/5 flex items-center justify-between">
-            <span className="text-[9px] text-white/20 font-medium">
+          <div className="px-4 py-2 border-t border-gray-100 flex items-center justify-between">
+            <span className="text-[9px] text-gray-400 font-medium">
               Showing {activeTab === "tasks" ? taskRows.length : activeTab === "projects" ? projectRows.length : activeTab === "clients" ? clientRows.length : activeTab === "approvals" ? approvalRows.length : fileRows.length} items
             </span>
-            <button className="flex items-center gap-1 text-[9px] text-white/30 hover:text-white/60 transition-colors font-medium">
+            <button className="flex items-center gap-1 text-[9px] text-gray-500 hover:text-gray-900 transition-colors font-medium">
               View all <ChevronRight className="h-2.5 w-2.5" />
             </button>
           </div>
