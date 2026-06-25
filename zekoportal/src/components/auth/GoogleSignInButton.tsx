@@ -39,11 +39,11 @@ export function GoogleSignInButton({ isLoading, onClick }: GoogleSignInButtonPro
       variant="outline"
       onClick={onClick}
       disabled={isLoading}
-      className="w-full h-10 font-semibold border-border/60 bg-transparent hover:bg-white/5 text-white gap-2.5 transition-all disabled:opacity-60"
+      className="w-full h-10 font-semibold border-border/60 bg-transparent hover:bg-muted text-foreground gap-2.5 transition-all disabled:opacity-60"
     >
       {isLoading ? (
         <>
-          <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white shrink-0" />
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-foreground/40 border-t-foreground shrink-0" />
           Signing in...
         </>
       ) : (

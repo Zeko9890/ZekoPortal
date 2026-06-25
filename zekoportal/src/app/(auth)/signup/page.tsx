@@ -11,7 +11,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { getAuthErrorMessage } from "@/lib/auth-errors";
 import { signInWithGoogle } from "@/lib/google-auth";
-import MascotHero from "@/components/auth/MascotHero";
+import CollaborationHero from "@/components/auth/CollaborationHero";
 import { GoogleSignInButton } from "@/components/auth/GoogleSignInButton";
 
 export default function SignupPage() {
@@ -62,12 +62,12 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen w-screen flex bg-[#09090B] text-white overflow-hidden relative">
+    <div className="min-h-screen w-screen flex bg-background text-foreground overflow-hidden relative transition-colors duration-300">
       {/* Left Panel: Form */}
       <div className="w-full lg:w-[48%] flex flex-col justify-between p-6 md:p-12 relative z-10">
         {/* Brand Header */}
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary text-white font-bold text-sm select-none">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground font-bold text-sm select-none">
             Z
           </div>
           <span className="font-semibold tracking-tight text-base">
@@ -115,7 +115,7 @@ export default function SignupPage() {
                   placeholder="John Connor"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="bg-[#111827] border-[#27272A] h-10 placeholder:text-[#71717A] focus:border-[#3F3F46] focus:ring-0"
+                  className="bg-transparent dark:bg-[#111827] border-border dark:border-[#1F2937] text-foreground dark:text-white h-10 placeholder:text-muted-foreground dark:placeholder-[#64748B] focus:border-primary dark:focus:border-[#60A5FA] focus:ring-1 focus:ring-primary/20 dark:focus:ring-[#60A5FA]/20 dark:focus:shadow-[0_0_15px_rgba(96,165,250,0.15)] transition-all"
                   disabled={isLoading || isSuccess}
                 />
               </div>
@@ -130,7 +130,7 @@ export default function SignupPage() {
                   placeholder="john@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-[#111827] border-[#27272A] h-10 placeholder:text-[#71717A] focus:border-[#3F3F46] focus:ring-0"
+                  className="bg-transparent dark:bg-[#111827] border-border dark:border-[#1F2937] text-foreground dark:text-white h-10 placeholder:text-muted-foreground dark:placeholder-[#64748B] focus:border-primary dark:focus:border-[#60A5FA] focus:ring-1 focus:ring-primary/20 dark:focus:ring-[#60A5FA]/20 dark:focus:shadow-[0_0_15px_rgba(96,165,250,0.15)] transition-all"
                   disabled={isLoading || isSuccess}
                 />
               </div>
@@ -145,7 +145,7 @@ export default function SignupPage() {
                   placeholder="Skynet Solutions"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  className="bg-zinc-900/60 border-border/80 h-9.5 placeholder:text-muted-foreground/50"
+                  className="bg-transparent dark:bg-[#111827] border-border dark:border-[#1F2937] text-foreground dark:text-white h-10 placeholder:text-muted-foreground dark:placeholder-[#64748B] focus:border-primary dark:focus:border-[#60A5FA] focus:ring-1 focus:ring-primary/20 dark:focus:ring-[#60A5FA]/20 dark:focus:shadow-[0_0_15px_rgba(96,165,250,0.15)] transition-all"
                   disabled={isLoading || isSuccess}
                 />
               </div>
@@ -160,7 +160,7 @@ export default function SignupPage() {
                   placeholder="At least 6 characters"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-[#111827] border-[#27272A] h-10 pr-10 placeholder:text-[#71717A] focus:border-[#3F3F46] focus:ring-0"
+                  className="bg-transparent dark:bg-[#111827] border-border dark:border-[#1F2937] text-foreground dark:text-white h-10 pr-10 placeholder:text-muted-foreground dark:placeholder-[#64748B] focus:border-primary dark:focus:border-[#60A5FA] focus:ring-1 focus:ring-primary/20 dark:focus:ring-[#60A5FA]/20 dark:focus:shadow-[0_0_15px_rgba(96,165,250,0.15)] transition-all"
                   disabled={isLoading || isSuccess}
                 />
               </div>
@@ -173,7 +173,7 @@ export default function SignupPage() {
                   checked={agree}
                   onChange={(e) => setAgree(e.target.checked)}
                   disabled={isLoading || isSuccess}
-                  className="rounded border-zinc-800 bg-zinc-900 text-primary focus:ring-primary h-4 w-4 mt-0.5 accent-primary cursor-pointer disabled:opacity-50"
+                  className="rounded border-border dark:border-zinc-800 bg-transparent dark:bg-zinc-900 text-primary focus:ring-primary h-4 w-4 mt-0.5 accent-primary cursor-pointer disabled:opacity-50 transition-colors"
                 />
                 <label
                   htmlFor="agree"
@@ -189,7 +189,7 @@ export default function SignupPage() {
               {/* Signup Button */}
               <Button
                 type="submit"
-                className="w-full h-10 mt-1 font-semibold"
+                className="w-full h-10 mt-1 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground dark:bg-gradient-to-r dark:from-blue-600 dark:to-blue-500 dark:hover:from-blue-500 dark:hover:to-blue-400 dark:shadow-[0_0_20px_rgba(59,130,246,0.2)] dark:hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] transition-all hover:-translate-y-0.5"
                 disabled={isLoading || isSuccess || !agree}
               >
                 {isLoading ? (
@@ -236,14 +236,13 @@ export default function SignupPage() {
       </div>
 
       {/* Right Panel */}
-      <div className="hidden lg:flex lg:w-[52%] bg-[#111827] border-l border-[#27272A] relative flex-col justify-between p-12 overflow-hidden">
+      <div className="hidden lg:flex lg:w-[52%] bg-[linear-gradient(135deg,#FFFBF8_0%,#FFF0E5_50%,#FFEBE0_100%)] border-l border-[#F5E6DA] relative flex-col justify-between p-12 overflow-hidden transition-colors duration-300">
         {/* Grid and lighting overlays */}
         <div className="absolute inset-0 grid-bg opacity-45 pointer-events-none" />
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-primary/20 blur-[100px] pointer-events-none animate-pulse-slow" />
 
-        {/* Interactive Mascot Hero */}
-        <div className="my-auto relative max-w-lg mx-auto w-full h-[400px]">
-          <MascotHero />
+        {/* Interactive Collaboration Hero */}
+        <div className="my-auto relative max-w-[500px] mx-auto w-full h-[500px]">
+          <CollaborationHero />
         </div>
 
         {/* Bottom branding signature */}
